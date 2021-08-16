@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="login_error_msg">Errore di compilazione; i dettagli sono mostrati sotto i campi coinvolti.</string>
+
+    <string name="login_login_text">Login</string>
+    <string name="login_username_text">Username</string>
+    <string name="login_password_text">Password</string>
+
+    <string name="login_login_button">Accedi</string>
+    <string name="login_signup_link"><u>Non hai un account? Registrati</u></string>
+
+    <!-- Messaggi d'errore !-->
+    <string name="login_error_emptyField">Questo campo non può essere lasciato vuoto</string>
+    <string name="login_error_invalidUsername">L\'utente specificato non esiste, assicurati di averlo digitato correttamente oppure registrati col link in fondo alla pagina</string>
+    <string name="login_error_invalidPassword">La password specificata è errata, assicurati di averla digitata correttamente</string>
+
+</resources>

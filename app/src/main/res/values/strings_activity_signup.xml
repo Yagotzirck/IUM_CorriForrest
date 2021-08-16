@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="signup_error_msg">Errore di compilazione; i dettagli sono mostrati sotto i campi coinvolti.</string>
+    <string name="signup_signup_text">Registrazione</string>
+
+    <string name="signup_username_text">Username</string>
+
+    <string name="signup_password_text">Password</string>
+    <string name="signup_password_confirm_text">Conferma Password</string>
+
+    <string name="signup_weight_text">Peso (Kg)</string>
+
+    <string name="signup_signup_button">Registrati</string>
+    <string name="signup_backToLogin_text">Torna al login</string>
+
+    <!-- Messaggi d'errore !-->
+    <string name="signup_error_emptyField">Questo campo non può essere lasciato vuoto</string>
+    <string name="signup_error_userAlreadyExists">L\'utente specificato è già esistente, scegli un altro username</string>
+    <string name="signup_error_passwordMismatch">Le password inserite non coincidono, assicurati di digitare la stessa password in entrambi i campi</string>
+
+
+</resources>

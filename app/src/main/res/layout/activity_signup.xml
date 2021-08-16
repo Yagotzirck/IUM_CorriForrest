@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SignupActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width = "match_parent"
+            android:layout_height = "wrap_content"
+            android:orientation = "vertical"
+            android:layout_marginHorizontal = "10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/app_name"
+                android:textColor="@color/black"
+                android:textSize="36sp"
+                android:layout_gravity="center"
+                >
+            </TextView>
+
+            <ImageView
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_dri"
+                android:contentDescription="@string/app_logo_content_description" />
+
+
+            <!-- Messaggio d'errore !-->
+            <TextView
+                android:id="@+id/signup_errorMsg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/signup_error_msg"
+                android:textColor="@color/red"
+                android:textSize="15sp"
+                android:layout_marginHorizontal="5dp"
+                android:gravity="center"
+                android:visibility="gone"
+                >
+            </TextView>
+
+            <Space
+                android:layout_width = "match_parent"
+                android:layout_height = "10dp"
+                >
+            </Space>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/signup_signup_text"
+                android:textColor="@color/black"
+                android:textSize="36sp"
+                android:layout_gravity="center"
+                >
+            </TextView>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id = "@+id/signup_username"
+                app:boxBackgroundColor="@android:color/transparent"
+                android:background="@android:color/transparent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/signup_username_text">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="30dp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id = "@+id/signup_weight"
+                app:boxBackgroundColor="@android:color/transparent"
+                android:background="@android:color/transparent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/signup_weight_text">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="30dp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id = "@+id/signup_password"
+                app:boxBackgroundColor="@android:color/transparent"
+                android:background="@android:color/transparent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/login_password_text">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="30dp" />
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id = "@+id/signup_password_confirm"
+                app:boxBackgroundColor="@android:color/transparent"
+                android:background="@android:color/transparent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/signup_password_confirm_text">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="30dp" />
+
+            <!-- Pulsante "Accedi" !-->
+
+            <LinearLayout
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:orientation = "horizontal"
+                android:weightSum="1.0">
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="0.2">
+
+                </Space>
+
+                <Button
+                    android:id="@+id/signup_signup"
+                    android:layout_weight="0.6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="20dp"
+                    android:textAllCaps="false"
+                    android:textSize="40sp"
+                    android:textColor="@color/white"
+                    android:backgroundTint="@color/light_green"
+                    android:text = "@string/signup_signup_button"
+                    >
+                </Button>
+
+            </LinearLayout>
+
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="30dp" />
+
+            <!-- Registrazione !-->
+            <TextView
+                android:id="@+id/signup_backToLogin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/link_blue"
+                android:layout_gravity="center"
+                android:textSize="20sp"
+                android:text="@string/signup_backToLogin_text">
+            </TextView>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="30dp" />
+
+
+
+
+
+
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
