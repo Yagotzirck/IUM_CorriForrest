@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/drawer_start_session"
+            android:icon="@drawable/ic_startsession"
+            android:title="@string/drawer_start_session"
+            />
+
+        <item
+            android:id="@+id/drawer_session_history"
+            android:icon="@drawable/ic_sessionhistory"
+            android:title="@string/drawer_session_history"
+            />
+
+        <item
+            android:id="@+id/drawer_statistics"
+            android:icon="@drawable/ic_stats"
+            android:title="@string/drawer_statistics"
+            />
+
+        <item
+            android:id="@+id/drawer_goals"
+            android:icon="@drawable/ic_goals"
+            android:title="@string/drawer_goals"
+            />
+
+        <item
+            android:id="@+id/drawer_profile"
+            android:icon="@drawable/ic_profile"
+            android:title="@string/drawer_profile"
+            />
+
+        <item
+            android:id="@+id/drawer_logout"
+            android:icon="@drawable/ic_logout"
+            android:title="@string/drawer_logout"
+            />
+    </group>
+
+</menu>

@@ -45,7 +45,7 @@ public class LoginActivity extends AppCompatActivity {
         // se tutto è andato a buon fine, passa all'activity Home
         LoggedUser loggedUser = LoggedUser.getInstance();
         loggedUser.set(username.getEditText().getText().toString());
-        Intent home = new Intent(this, StartSessionActivity.class);
+        Intent home = new Intent(this, MainActivity.class);
         startActivity(home);
 
     }

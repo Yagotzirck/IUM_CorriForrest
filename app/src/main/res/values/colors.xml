@@ -16,4 +16,6 @@
 
     <color name="list_even">#D3D3D3</color>
     <color name="list_odd">#B0B0B0</color>
+
+    <color name="toolbar_color">@color/black</color>
 </resources>

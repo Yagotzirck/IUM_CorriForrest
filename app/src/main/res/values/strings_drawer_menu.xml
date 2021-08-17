@@ -1,0 +1,8 @@
+<resources>
+    <string name="drawer_start_session">Avvia sessione</string>
+    <string name="drawer_session_history">Cronologia sessioni</string>
+    <string name="drawer_statistics">Statistiche</string>
+    <string name="drawer_goals">Obiettivi</string>
+    <string name="drawer_profile">Profilo</string>
+    <string name="drawer_logout">Logout</string>
+</resources>
