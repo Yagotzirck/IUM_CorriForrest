@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="10dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0.000"
+        android:textSize="27sp"
+        android:textColor="@color/black"
+        android:layout_gravity="center"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="km"
+        android:textColor="@color/black"
+        android:textSize="27sp"
+        android:layout_gravity="center"
+        />
+
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        />
+
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="30dp"
+        android:layout_gravity="center"
+
+        android:columnCount="3"
+        android:rowCount="3">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:gravity="center"
+            android:layout_gravity="fill_horizontal"
+            android:text="@string/session_duration"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_gravity="center"
+
+            android:gravity="center"
+            android:text="@string/session_burned_calories"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/session_avg_speed"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            />
+
+        <!-- ROW 2 - IMAGES !-->
+        <ImageView
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:gravity="center"
+
+            android:src="@drawable/ic_timer"
+            app:tint="@color/black"
+            />
+
+        <ImageView
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_burned_calories"
+            app:tint="@color/black"
+            />
+
+        <ImageView
+            android:layout_width="70dp"
+            android:layout_height="60dp"
+            android:gravity="center"
+            android:src="@drawable/ic_speed"
+            app:tint="@color/black" />
+
+        <!-- ROW 3 - DATA !-->
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_gravity="center"
+
+            android:gravity="center"
+            android:text="0:00:00"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_gravity="center"
+
+            android:gravity="center"
+            android:text="0 kcal"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+
+        <TextView
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+
+            android:gravity="center"
+            android:text="0 km/h"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+
+    </GridLayout>
+
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="36dp"
+        />
+
+    <ImageButton
+        android:id="@+id/button_start_session"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_gravity="center"
+        android:scaleType="fitXY"
+        android:adjustViewBounds="true"
+        android:src="@drawable/ic_play"
+
+        app:tint="@color/button_green"
+        android:background="@null"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/session_start_session"
+        android:textColor="@color/black"
+        android:textSize="20sp" />
+
+
+</LinearLayout>

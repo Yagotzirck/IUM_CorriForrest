@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_status"
+        android:icon="@drawable/ic_bottomnav_status"
+        android:title="@string/session_bn_status"/>
+
+    <item
+        android:id="@+id/nav_map"
+        android:icon="@drawable/ic_bottomnav_map"
+        android:title="@string/session_bn_map"/>
+
+    <item
+        android:id="@+id/nav_goals"
+        android:icon="@drawable/ic_goals"
+        android:title="@string/session_bn_goals"/>
+</menu>

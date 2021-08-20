@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="session_duration">Durata\ncorsa</string>
+    <string name="session_burned_calories">Calorie\nbruciate</string>
+    <string name="session_avg_speed">Velocità\nmedia</string>
+
+    <string name="session_start_session">Avvia sessione</string>
+    <string name="session_pause_session">Pausa corsa</string>
+    <string name="session_resume_session">Riprendi\ncorsa</string>
+    <string name="session_stop_session">Termina\nsessione</string>
+
+    <!-- bn = bottom navigation !-->
+    <string name="session_bn_status">Stato corsa</string>
+    <string name="session_bn_map">Mappa</string>
+    <string name="session_bn_goals">Obiettivi</string>
+
+</resources>
