@@ -145,25 +145,119 @@
         android:layout_height="36dp"
         />
 
-    <ImageButton
-        android:id="@+id/button_pause_session"
-        android:layout_width="90dp"
-        android:layout_height="90dp"
-        android:layout_gravity="center"
-        android:scaleType="fitXY"
-        android:adjustViewBounds="true"
-        android:src="@drawable/ic_pause"
-
-        app:tint="@color/button_orange"
-        android:background="@null"/>
-
-    <TextView
+    <LinearLayout
+        android:id="@+id/session_started_buttons"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="@string/session_pause_session"
-        android:textColor="@color/black"
-        android:textSize="20sp" />
+        android:orientation="vertical"
+        android:layout_gravity="center">
 
+        <ImageButton
+            android:id="@+id/button_pause_session"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:layout_gravity="center"
+            android:scaleType="fitXY"
+            android:adjustViewBounds="true"
+            android:src="@drawable/ic_pause"
+
+            app:tint="@color/grey"
+            android:background="@null"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/session_pause_session"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="15sp"/>
+
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/switch_pause_session"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:thumb="@drawable/thumb"
+            />
+
+    </LinearLayout>
+
+
+
+        <RelativeLayout
+            android:visibility="gone"
+            android:id="@+id/session_paused_buttons"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_alignParentStart="true">
+
+                <ImageButton
+                    android:id="@+id/button_resume_session"
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
+
+                    android:layout_gravity="center"
+
+                    android:scaleType="fitXY"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/ic_play"
+
+                    app:tint="@color/button_green"
+                    android:background="@null"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="@string/session_resume_session"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_alignParentEnd="true">
+
+                <ImageButton
+                    android:id="@+id/button_stop_session"
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
+
+                    android:scaleType="fitXY"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/ic_stop"
+
+                    app:tint="@color/red"
+                    android:background="@null"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="@string/session_stop_session"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+
+            </LinearLayout>
+
+
+        </RelativeLayout>
 
 </LinearLayout>

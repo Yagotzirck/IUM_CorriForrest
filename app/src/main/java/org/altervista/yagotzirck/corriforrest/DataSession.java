@@ -2,12 +2,14 @@ package org.altervista.yagotzirck.corriforrest;
 
 import android.annotation.SuppressLint;
 
+import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Random;
 
-public class DataSession {
+public class DataSession implements Serializable {
+    private String user;
     private Date date;
     private int duration;   // in seconds
     private int distance;   // in meters
@@ -15,12 +17,12 @@ public class DataSession {
     private int userWeight; // in Kg
 
     public DataSession(){
+        user = LoggedUser.getInstance().get();
         date = new Date();
         duration = 0;
         distance = 0;
 
-        String loggedUser = LoggedUser.getInstance().get();
-        userWeight = Users.getInstance().get(loggedUser).getWeight();
+        userWeight = Users.getInstance().get(user).getWeight();
     }
 
     // setters
