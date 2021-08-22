@@ -1,7 +1,11 @@
 package org.altervista.yagotzirck.corriforrest;
 
+import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.provider.ContactsContract;
+import android.se.omapi.Session;
+import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,6 +32,8 @@ public class SessionStatusFragment extends Fragment {
     private static boolean isPaused = false;
     private static boolean isPauseUnlocked = false;
 
+    private static SessionStartedActivity sessionStartedActivity = null;
+
 
     private TextView sessionKm;
     private TextView sessionDuration;
@@ -52,14 +58,11 @@ public class SessionStatusFragment extends Fragment {
         public DisplayStats(DataSession ds){ dataSession = ds; }
 
         public void run() {
-            getActivity().runOnUiThread(new Runnable() {
+            sessionStartedActivity.runOnUiThread(new Runnable() {
 
                 @Override
                 public void run() {
-                    sessionKm.setText(dataSession.getDistance());
-                    sessionDuration.setText(dataSession.getDuration());
-                    sessionKcal.setText(dataSession.getBurnedCalories());
-                    sessionAvgSpeed.setText(dataSession.getAvgSpeed());
+                    updateStats(dataSession);
                 }
             });
         }
@@ -91,7 +94,6 @@ public class SessionStatusFragment extends Fragment {
         sessionPausedButtons = view.findViewById(R.id.session_paused_buttons);
 
 
-        isPauseUnlocked = false;
 
         // set listeners
         switchPause.setOnCheckedChangeListener((viewInner, motionEvent) -> pauseUnlockerTouched());
@@ -99,37 +101,57 @@ public class SessionStatusFragment extends Fragment {
         buttonPause.setOnClickListener( v -> pause()  );
         buttonResume.setOnClickListener( v -> resume() );
 
+        updateStats(sessionStartedActivity.getDataSession());
 
-
-
-        if(!isPaused)
-            startTimer();
-
-
+        if(isPaused)
+            pause();
+        else {
+            resume();
+            isPaused = false;
+            isPauseUnlocked = false;
+        }
     }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+
+        if (sessionStartedActivity == null && context instanceof SessionStartedActivity)
+            sessionStartedActivity = (SessionStartedActivity) context;
+    }
+
 
     public void startTimer(){
-        DataSession dataSession = ((SessionStartedActivity)getActivity()).getDataSession();
+        DataSession dataSession = sessionStartedActivity.getDataSession();
         timer = new Timer();
-        timer.schedule(new DisplayStats(dataSession), 1000, 1000);
+        timer.schedule(new DisplayStats(dataSession), 0, 1000);
 
-        ((SessionStartedActivity)getActivity()).startTimer();
+        sessionStartedActivity.startTimer();
     }
 
+    private void updateStats(DataSession dataSession){
+        sessionKm.setText(dataSession.getDistance());
+        sessionDuration.setText(dataSession.getDuration());
+        sessionKcal.setText(dataSession.getBurnedCalories());
+        sessionAvgSpeed.setText(dataSession.getAvgSpeed());
+    }
+
+
     public void stopTimer(){
-        timer.cancel();
-        ((SessionStartedActivity)getActivity()).stopTimer();
+        if(timer != null)
+            timer.cancel();
+        sessionStartedActivity.stopTimer();
     }
 
 
     private boolean pauseUnlockerTouched(){
         if(switchPause.isChecked()){
             isPauseUnlocked = true;
-            DrawableCompat.setTint(buttonPause.getDrawable(), ContextCompat.getColor(getActivity().getApplicationContext(), R.color.button_orange));
+            DrawableCompat.setTint(buttonPause.getDrawable(), ContextCompat.getColor(sessionStartedActivity.getApplicationContext(), R.color.button_orange));
         }
         else{
             isPauseUnlocked = false;
-            DrawableCompat.setTint(buttonPause.getDrawable(), ContextCompat.getColor(getActivity().getApplicationContext(), R.color.grey));
+            DrawableCompat.setTint(buttonPause.getDrawable(), ContextCompat.getColor(sessionStartedActivity.getApplicationContext(), R.color.grey));
         }
 
         return false;   // to make the listener happy
@@ -151,9 +173,7 @@ public class SessionStatusFragment extends Fragment {
     }
 
     private void resume(){
-        isPaused = false;
-        isPauseUnlocked = false;
-        DrawableCompat.setTint(buttonPause.getDrawable(), ContextCompat.getColor(getActivity().getApplicationContext(), R.color.grey));
+        DrawableCompat.setTint(buttonPause.getDrawable(), ContextCompat.getColor(sessionStartedActivity.getApplicationContext(), R.color.grey));
         switchPause.setChecked(false);
 
         startTimer();
@@ -165,7 +185,9 @@ public class SessionStatusFragment extends Fragment {
     private void stop(){
         isPaused = false;
         isPauseUnlocked = false;
-        // Change activity here
+        DataSession dataSession = sessionStartedActivity.getDataSession();
+        sessionStartedActivity = null;  // for garbage collection to take place
+        // Change activity here (use a dialog fragment for confirmation)
     }
 
 }

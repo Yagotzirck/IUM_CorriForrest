@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -15,11 +14,16 @@ import java.util.TimerTask;
 
 
 
+
+
+
+
 public class SessionStartedActivity extends AppCompatActivity {
 
     private DataSession dataSession;
 
     private Timer timer;
+    private boolean isTimerStopped = true;
 
     class UpdateStats extends TimerTask {
 
@@ -53,6 +57,11 @@ public class SessionStartedActivity extends AppCompatActivity {
                         case R.id.nav_status:
                             selectedFragment = new SessionStatusFragment();
                             break;
+
+                        case R.id.nav_map:
+                            selectedFragment = new SessionMapFragment();
+                            break;
+
                     }
 
                     getSupportFragmentManager().beginTransaction().replace(R.id.session_fragment_container, selectedFragment).commit();
@@ -60,13 +69,20 @@ public class SessionStartedActivity extends AppCompatActivity {
                 }
             };
 
+
+
+
     public void startTimer(){
-        timer = new Timer();
-        timer.schedule(new UpdateStats(), 1000, 1000);
+        if(isTimerStopped){
+            isTimerStopped = false;
+            timer = new Timer();
+            timer.schedule(new UpdateStats(), 1000, 1000);
+        }
     }
 
     public void stopTimer(){
         timer.cancel();
+        isTimerStopped = true;
     }
 
     public DataSession getDataSession(){
