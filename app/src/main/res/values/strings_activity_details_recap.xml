@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="details_date">Data</string>
+    <string name="details_starting_time">Ora d\'inizio</string>
+    <string name="details_duration">Durata</string>
+    <string name="details_distance">Distanza percorsa</string>
+    <string name="details_avg_rhythm">Ritmo medio</string>
+    <string name="details_avg_speed">Velocità media</string>
+    <string name="details_burned_calories">Calorie bruciate</string>
+
+    <string name="details_text_size">20dp</string>
+
+    <string name="details_map_button">Mappa percorso</string>
+
+    <!-- For recap activity only !-->
+    <string name="recap_saveAndClose_button">Salva sessione e chiudi</string>
+    <string name="recap_exitWithoutSaving_button">Chiudi senza salvare</string>
+
+
+</resources>

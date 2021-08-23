@@ -25,7 +25,7 @@ public class User {
     public void setPassword(String password){ this.password = password; }
     public void setWeight(int weight){ this.weight = weight; }
 
-    // metodi per la gestione all'interno delle liste
+    // methods for list item management
     @Override
     public int hashCode(){ return username.hashCode(); }
 

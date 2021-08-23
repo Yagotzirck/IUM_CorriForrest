@@ -1,7 +1,6 @@
 package org.altervista.yagotzirck.corriforrest;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 /* Users: singleton che conterrà la lista di utenti creati durante la sessione, accessibili

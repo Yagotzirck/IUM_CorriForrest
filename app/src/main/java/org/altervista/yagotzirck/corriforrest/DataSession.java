@@ -16,8 +16,8 @@ public class DataSession implements Serializable {
 
     private int userWeight; // in Kg
 
-    public DataSession(){
-        user = LoggedUser.getInstance().get();
+    public DataSession(String user){
+        this.user = user;
         date = new Date();
         duration = 0;
         distance = 0;
@@ -40,6 +40,8 @@ public class DataSession implements Serializable {
     }
 
     // getters
+
+    public Date getDateValue(){ return date; }
 
     public String getDate(){
         DateFormat dateFormatter = new SimpleDateFormat("dd/MM/yyyy");
@@ -92,5 +94,24 @@ public class DataSession implements Serializable {
         int intValue = (int) value;
 
         return intValue + " kcal";
+    }
+
+    // methods for list item management
+    @Override
+    public int hashCode(){ return date.hashCode(); }
+
+    @Override
+    public boolean equals(Object obj){
+        if (this == obj)
+            return true;
+
+        if (obj == null)
+            return false;
+
+        if (getClass() != obj.getClass())
+            return false;
+        DataSession dataSession = (DataSession) obj;
+        // field comparison
+        return date.equals(dataSession.date);
     }
 }

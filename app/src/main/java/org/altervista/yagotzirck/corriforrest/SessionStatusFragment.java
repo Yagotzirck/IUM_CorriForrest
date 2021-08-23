@@ -1,7 +1,10 @@
 package org.altervista.yagotzirck.corriforrest;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.se.omapi.Session;
@@ -31,6 +34,7 @@ import java.util.TimerTask;
 public class SessionStatusFragment extends Fragment {
     private static boolean isPaused = false;
     private static boolean isPauseUnlocked = false;
+    private static Timer timer = null;
 
     private static SessionStartedActivity sessionStartedActivity = null;
 
@@ -50,7 +54,7 @@ public class SessionStatusFragment extends Fragment {
     private RelativeLayout sessionPausedButtons;
 
 
-    private Timer timer;
+
 
     class DisplayStats extends TimerTask {
         private DataSession dataSession;
@@ -100,6 +104,7 @@ public class SessionStatusFragment extends Fragment {
 
         buttonPause.setOnClickListener( v -> pause()  );
         buttonResume.setOnClickListener( v -> resume() );
+        buttonStop.setOnClickListener( v -> confirmStop() );
 
         updateStats(sessionStartedActivity.getDataSession());
 
@@ -122,6 +127,9 @@ public class SessionStatusFragment extends Fragment {
 
 
     public void startTimer(){
+        if(timer != null)
+            timer.cancel();
+
         DataSession dataSession = sessionStartedActivity.getDataSession();
         timer = new Timer();
         timer.schedule(new DisplayStats(dataSession), 0, 1000);
@@ -138,8 +146,10 @@ public class SessionStatusFragment extends Fragment {
 
 
     public void stopTimer(){
-        if(timer != null)
+        if(timer != null) {
             timer.cancel();
+            timer = null;
+        }
         sessionStartedActivity.stopTimer();
     }
 
@@ -175,6 +185,7 @@ public class SessionStatusFragment extends Fragment {
     private void resume(){
         DrawableCompat.setTint(buttonPause.getDrawable(), ContextCompat.getColor(sessionStartedActivity.getApplicationContext(), R.color.grey));
         switchPause.setChecked(false);
+        isPauseUnlocked = false;
 
         startTimer();
 
@@ -185,9 +196,36 @@ public class SessionStatusFragment extends Fragment {
     private void stop(){
         isPaused = false;
         isPauseUnlocked = false;
-        DataSession dataSession = sessionStartedActivity.getDataSession();
-        sessionStartedActivity = null;  // for garbage collection to take place
+        stopTimer();
+
+        SessionStartedActivity sessionStartedActivityLocal = sessionStartedActivity;
+        sessionStartedActivity = null;  // for garbage collection to take place (static variable)
+        DataSession dataSession = sessionStartedActivityLocal.getDataSession();
+
+
         // Change activity here (use a dialog fragment for confirmation)
+        Intent sessionRecap = new Intent(sessionStartedActivityLocal, SessionRecapActivity.class);
+        sessionRecap.putExtra("dataSession", dataSession);
+        startActivity(sessionRecap);
     }
+
+    private void confirmStop(){
+        AlertDialog.Builder adb = new AlertDialog.Builder(getContext());
+        adb.setTitle("Termina sessione");
+        adb.setMessage("Vuoi terminare la sessione?");
+        adb.setIcon(android.R.drawable.ic_dialog_alert);
+
+        adb.setPositiveButton("Conferma", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                stop();
+            }
+        });
+
+        adb.setNegativeButton("Annulla", null);
+        adb.show();
+
+    }
+
+
 
 }

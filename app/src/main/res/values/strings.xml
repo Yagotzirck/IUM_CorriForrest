@@ -5,4 +5,6 @@
 
     <string name="navigation_drawer_open">Apri il navigation drawer</string>
     <string name="navigation_drawer_close">Chiudi il navigation drawer</string>
+
+    <string name="dialogmap_close">Chiudi</string>
 </resources>

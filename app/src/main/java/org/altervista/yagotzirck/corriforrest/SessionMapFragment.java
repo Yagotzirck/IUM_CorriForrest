@@ -43,7 +43,7 @@ public class SessionMapFragment extends Fragment implements OnMapReadyCallback{
         mMap = googleMap;
         float zoomAmount =18f;
 
-        // Add a marker in Sydney and move the camera
+
         LatLng startPosLat = new LatLng(39.906909, 8.514383);
         LatLng currPosLat = new LatLng(39.907007, 8.514008);
 

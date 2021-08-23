@@ -40,7 +40,7 @@ public class SessionStartedActivity extends AppCompatActivity {
         BottomNavigationView bottomNav = findViewById(R.id.session_bottom_nav);
         bottomNav.setOnNavigationItemSelectedListener(navListener);
 
-        dataSession = new DataSession();
+        dataSession = new DataSession(LoggedUser.getInstance().get());
 
 
         getSupportFragmentManager().beginTransaction().replace(R.id.session_fragment_container,
