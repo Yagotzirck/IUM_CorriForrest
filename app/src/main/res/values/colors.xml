@@ -14,7 +14,9 @@
     <color name="button_green">#24C06B</color>
     <color name="button_orange">#FFA831</color>
 
+    <color name="light_grey">#EEE</color>
     <color name="grey">#AAA</color>
+    <color name="dark_grey">#222</color>
 
     <color name="link_blue">#0645AD</color>
     <color name="light_blue">#41C3F7</color>
@@ -29,4 +31,6 @@
     <color name="bn_color">#333</color>
     <color name="bn_selected_items_color">#21E19E</color>
     <color name="bn_items_color">#BBB</color>
+
+    <color name="history_itemlist_bg_color">@color/light_grey</color>
 </resources>

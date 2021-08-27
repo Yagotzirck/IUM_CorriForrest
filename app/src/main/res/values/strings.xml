@@ -7,4 +7,20 @@
     <string name="navigation_drawer_close">Chiudi il navigation drawer</string>
 
     <string name="dialogmap_close">Chiudi</string>
+
+
+
+    <string name="interval_period_text">Periodo</string>
+    <string name="radio_period_custom_interval">Intervallo personalizzato</string>
+    <string name="radio_period_day">Giorno</string>
+    <string name="radio_period_month">Mese</string>
+    <string name="radio_period_year">Anno</string>
+    <string name="radio_period_all">Tutto</string>
+
+    <string name="interval_from_text">Dal</string>
+    <string name="interval_to_text">al</string>
+
+
+    <string name="numpicker_title_month">Mese</string>
+    <string name="numpicker_title_year">Anno</string>
 </resources>

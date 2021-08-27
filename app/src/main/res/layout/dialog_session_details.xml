@@ -1,0 +1,424 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".SessionRecapActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!-- 1) Date !-->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginVertical="5dp">
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="10dp"
+                android:background="@color/list_even">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:orientation="horizontal"
+                    android:layout_alignParentStart="true">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="10dp"
+
+                        android:src="@drawable/ic_date"
+                        app:tint="@color/black"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/details_date"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="20dp"
+                        android:textSize="20dp"/>
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/recap_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:gravity="center"
+                    android:text="12/04/1985"
+                    android:textSize="20dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="20dp"/>
+
+            </RelativeLayout>
+
+            <!-- 2) Starting time !-->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="10dp"
+                android:background="@color/list_odd">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:orientation="horizontal"
+                    android:layout_alignParentStart="true">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="10dp"
+
+                        android:src="@drawable/ic_time"
+                        app:tint="@color/black"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/details_starting_time"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="20dp"
+                        android:textSize="20dp"/>
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/recap_startingTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:gravity="center"
+                    android:text="10:15"
+                    android:textSize="20dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="20dp"/>
+
+            </RelativeLayout>
+
+            <!-- 3) Duration !-->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="10dp"
+                android:background="@color/list_even">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:orientation="horizontal"
+                    android:layout_alignParentStart="true">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="10dp"
+
+                        android:src="@drawable/ic_timer"
+                        app:tint="@color/black"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/details_duration"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="20dp"
+                        android:textSize="20dp"/>
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/recap_duration"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:gravity="center"
+                    android:text="1:06:13"
+                    android:textSize="20dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="20dp"/>
+
+            </RelativeLayout>
+
+            <!-- 4) Distance !-->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="10dp"
+                android:background="@color/list_odd">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:orientation="horizontal"
+                    android:layout_alignParentStart="true">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="10dp"
+
+                        android:src="@drawable/ic_distance"
+                        app:tint="@color/black"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/details_distance"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="20dp"
+                        android:textSize="20dp"/>
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/recap_distance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:gravity="center"
+                    android:text="5.200 km"
+                    android:textSize="20dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="20dp"/>
+
+            </RelativeLayout>
+
+
+            <!-- 5) Average rhythm !-->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="10dp"
+                android:background="@color/list_even">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:orientation="horizontal"
+                    android:layout_alignParentStart="true">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="10dp"
+
+                        android:src="@drawable/ic_avg_rhythm"
+                        app:tint="@color/black"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/details_avg_rhythm"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="20dp"
+                        android:textSize="20dp"/>
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/recap_avgRhythm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:gravity="center"
+                    android:text="12'42'' / km"
+                    android:textSize="20dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="20dp"/>
+
+            </RelativeLayout>
+
+            <!-- 5) Average speed !-->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="10dp"
+                android:background="@color/list_odd">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:orientation="horizontal"
+                    android:layout_alignParentStart="true">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="10dp"
+
+                        android:src="@drawable/ic_speed"
+                        app:tint="@color/black"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/details_avg_speed"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="20dp"
+                        android:textSize="20dp"/>
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/recap_avgSpeed"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:gravity="center"
+                    android:text="4.9 km/h"
+                    android:textSize="20dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="20dp"/>
+
+            </RelativeLayout>
+
+
+            <!-- 6) Burned calories !-->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="10dp"
+                android:background="@color/list_even">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:orientation="horizontal"
+                    android:layout_alignParentStart="true">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="10dp"
+
+                        android:src="@drawable/ic_burned_calories"
+                        app:tint="@color/black"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/details_burned_calories"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="20dp"
+                        android:textSize="20dp"/>
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/recap_burnedCalories"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:gravity="center"
+                    android:text="500 kcal"
+                    android:textSize="20dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="20dp"/>
+
+            </RelativeLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="15dp"/>
+
+            <LinearLayout
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:orientation = "horizontal"
+                android:weightSum="1.0">
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="0.3">
+
+                </Space>
+
+                <Button
+                    android:id="@+id/recap_map"
+                    android:layout_weight="0.4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="20dp"
+                    android:textAllCaps="false"
+                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:backgroundTint="@color/blue"
+                    android:text = "@string/details_map_button"
+                    app:icon="@drawable/ic_bottomnav_map"
+                    app:iconGravity="start"
+                    >
+                </Button>
+
+            </LinearLayout>
+
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="15dp"/>
+
+            <LinearLayout
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:orientation = "horizontal"
+                android:weightSum="1.0">
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="0.3">
+
+                </Space>
+
+                <Button
+                    android:id="@+id/history_details_map"
+                    android:layout_weight="0.4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="15dp"
+                    android:textAllCaps="false"
+                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:backgroundTint="@color/link_blue"
+                    android:text = "@string/history_close_details"
+
+                    >
+                </Button>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

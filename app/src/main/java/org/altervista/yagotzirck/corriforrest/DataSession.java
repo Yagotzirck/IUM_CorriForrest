@@ -8,7 +8,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Random;
 
-public class DataSession implements Serializable {
+public class DataSession implements Serializable, Comparable<DataSession> {
     private String user;
     private Date date;
     private int duration;   // in seconds
@@ -23,6 +23,14 @@ public class DataSession implements Serializable {
         distance = 0;
 
         userWeight = Users.getInstance().get(user).getWeight();
+    }
+
+    // Constructor for debugging purposes
+    public DataSession(String user, Date date, int duration, int distance){
+        this(user);
+        this.date = date;
+        this.duration = duration;
+        this.distance = distance;
     }
 
     // setters
@@ -40,6 +48,8 @@ public class DataSession implements Serializable {
     }
 
     // getters
+
+    public String getUser(){ return user; }
 
     public Date getDateValue(){ return date; }
 
@@ -113,5 +123,10 @@ public class DataSession implements Serializable {
         DataSession dataSession = (DataSession) obj;
         // field comparison
         return date.equals(dataSession.date);
+    }
+
+    @Override
+    public int compareTo(DataSession ds) {
+        return this.date.compareTo(ds.date);
     }
 }

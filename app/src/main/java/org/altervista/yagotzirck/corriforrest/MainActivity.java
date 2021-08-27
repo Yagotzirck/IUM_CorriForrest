@@ -33,20 +33,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawer.addDrawerListener(abdToggle);
         abdToggle.syncState();
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                new StartSessionFragment()).commit();
+        int id = getIntent().getIntExtra("navId", R.id.drawer_start_session);
+        navigate(id);
     }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        switch(item.getItemId()){
-            case R.id.drawer_start_session:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new StartSessionFragment()).commit();
-                break;
-        }
+       navigate(item.getItemId());
 
-        drawer.closeDrawer(GravityCompat.START);
+       drawer.closeDrawer(GravityCompat.START);
 
         return true;
     }
@@ -57,5 +52,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             drawer.closeDrawer(GravityCompat.START);
         else
             super.onBackPressed();
+    }
+
+    private void navigate(int id){
+        switch(id){
+            case R.id.drawer_start_session:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new StartSessionFragment()).commit();
+                break;
+
+            case R.id.drawer_session_history:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new HistoryFragment()).commit();
+                break;
+        }
     }
 }
