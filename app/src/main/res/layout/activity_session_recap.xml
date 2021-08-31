@@ -23,7 +23,7 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingVertical="10dp"
+                    android:paddingVertical="8dp"
                     android:background="@color/list_even">
 
                     <LinearLayout
@@ -69,7 +69,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingVertical="10dp"
+                android:paddingVertical="8dp"
                 android:background="@color/list_odd">
 
                 <LinearLayout
@@ -115,7 +115,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingVertical="10dp"
+                android:paddingVertical="8dp"
                 android:background="@color/list_even">
 
                 <LinearLayout
@@ -161,7 +161,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingVertical="10dp"
+                android:paddingVertical="8dp"
                 android:background="@color/list_odd">
 
                 <LinearLayout
@@ -208,7 +208,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingVertical="10dp"
+                android:paddingVertical="8dp"
                 android:background="@color/list_even">
 
                 <LinearLayout
@@ -254,7 +254,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingVertical="10dp"
+                android:paddingVertical="8dp"
                 android:background="@color/list_odd">
 
                 <LinearLayout
@@ -301,7 +301,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingVertical="10dp"
+                android:paddingVertical="8dp"
                 android:background="@color/list_even">
 
                 <LinearLayout
@@ -369,7 +369,7 @@
                     android:textAllCaps="false"
                     android:textSize="15sp"
                     android:textColor="@color/white"
-                    android:backgroundTint="@color/blue"
+                    app:backgroundTint="@color/blue"
                     android:text = "@string/details_map_button"
                     app:icon="@drawable/ic_bottomnav_map"
                     app:iconGravity="start"
@@ -377,6 +377,30 @@
                 </Button>
 
             </LinearLayout>
+
+            <Button
+                android:id="@+id/recap_saveAndClose"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginVertical="5dp"
+                android:text="@string/recap_saveAndClose_button"
+                android:textAllCaps="false"
+                android:paddingVertical="20dp"
+                android:paddingHorizontal="60dp"
+                app:backgroundTint="@color/light_green"/>
+
+            <Button
+                android:id="@+id/recap_exitWithoutSaving"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginVertical="15dp"
+                android:text="@string/recap_exitWithoutSaving_button"
+                android:textAllCaps="false"
+                android:paddingVertical="15dp"
+                android:paddingHorizontal="40dp"
+                app:backgroundTint="@color/red"/>
 
 
         </LinearLayout>

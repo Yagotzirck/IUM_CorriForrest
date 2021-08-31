@@ -5,7 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -47,9 +46,9 @@ public class HistorySessionsAdapter extends ArrayAdapter<DataSession> {
 
 
         // Populate the data into the template view using the data object
-        distance.setText(dataSession.getDistance() + " km");
-        duration.setText(dataSession.getDuration());
-        date.setText(dataSession.getDate());
+        distance.setText(dataSession.getDistanceAsString() + " km");
+        duration.setText(dataSession.getDurationAsString());
+        date.setText(dataSession.getDateAsString());
 
         // Impostazione degli event listeners
         historyListItem.setOnClickListener( v -> showDetails(v) );

@@ -1,18 +1,13 @@
 package org.altervista.yagotzirck.corriforrest;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.ContactsContract;
-import android.se.omapi.Session;
-import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
@@ -138,10 +133,10 @@ public class SessionStatusFragment extends Fragment {
     }
 
     private void updateStats(DataSession dataSession){
-        sessionKm.setText(dataSession.getDistance());
-        sessionDuration.setText(dataSession.getDuration());
-        sessionKcal.setText(dataSession.getBurnedCalories());
-        sessionAvgSpeed.setText(dataSession.getAvgSpeed());
+        sessionKm.setText(dataSession.getDistanceAsString());
+        sessionDuration.setText(dataSession.getDurationAsString());
+        sessionKcal.setText(dataSession.getBurnedCaloriesAsString());
+        sessionAvgSpeed.setText(dataSession.getAvgSpeedAsString());
     }
 
 
@@ -213,7 +208,6 @@ public class SessionStatusFragment extends Fragment {
         AlertDialog.Builder adb = new AlertDialog.Builder(getContext());
         adb.setTitle("Termina sessione");
         adb.setMessage("Vuoi terminare la sessione?");
-        adb.setIcon(android.R.drawable.ic_dialog_alert);
 
         adb.setPositiveButton("Conferma", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {

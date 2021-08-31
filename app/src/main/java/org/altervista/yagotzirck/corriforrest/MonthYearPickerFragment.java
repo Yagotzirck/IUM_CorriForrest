@@ -68,8 +68,13 @@ public class MonthYearPickerFragment extends DialogFragment {
 
     private void dialogOK(){
         Calendar monthYear = Calendar.getInstance();
+
+        // The day is set to 15 in order to avoid problems in case the current day of the month is e.g. 31
+        // and the selected month has < 31 days (Feb/Apr/Jun/Sep/Nov)
+        monthYear.set(Calendar.DAY_OF_MONTH, 15);
         monthYear.set(Calendar.MONTH, monthPicker.getValue() - 1);
         monthYear.set(Calendar.YEAR, yearPicker.getValue());
+
 
         listener.monthYearCallback(monthYear.getTime());
     }

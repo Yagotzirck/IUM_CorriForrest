@@ -47,24 +47,30 @@ public class DataSession implements Serializable, Comparable<DataSession> {
         distance += getRandomNumber(1, 5);
     }
 
+    public void setDuration(int duration){ this.duration += duration; }
+    public void setDistance(int distance){ this.distance += distance; }
+
     // getters
 
     public String getUser(){ return user; }
 
-    public Date getDateValue(){ return date; }
+    public Date getDate(){ return date; }
 
-    public String getDate(){
+    public int getDuration(){ return duration; }
+    public int getDistance(){ return distance; }
+
+    public String getDateAsString(){
         DateFormat dateFormatter = new SimpleDateFormat("dd/MM/yyyy");
         return dateFormatter.format(date);
     }
 
-    public String getTime(){
+    public String getTimeAsString(){
         DateFormat timeFormatter = new SimpleDateFormat("HH:mm");
         return timeFormatter.format(date);
     }
 
     @SuppressLint("DefaultLocale")
-    public String getDuration() {
+    public String getDurationAsString() {
         int hours = duration / 3600;
         int minutes = (duration - hours * 3600) / 60;
         int seconds = duration % 60;
@@ -73,7 +79,7 @@ public class DataSession implements Serializable, Comparable<DataSession> {
     }
 
     @SuppressLint("DefaultLocale")
-    public String getDistance(){
+    public String getDistanceAsString(){
         int km = distance / 1000;
         int meters = distance % 1000;
 
@@ -81,7 +87,7 @@ public class DataSession implements Serializable, Comparable<DataSession> {
     }
 
     @SuppressLint("DefaultLocale")
-    public String getAvgRhythm(){
+    public String getAvgRhythmAsString(){
         int totalSecondsPerKm = (int)(duration / ((distance / 1000.0)));
 
         int minutes = totalSecondsPerKm / 60;
@@ -91,19 +97,23 @@ public class DataSession implements Serializable, Comparable<DataSession> {
     }
 
     @SuppressLint("DefaultLocale")
-    public String getAvgSpeed(){
+    public String getAvgSpeedAsString(){
         double kmPerHour = ( (double) distance / duration) * (18.0 / 5);
 
         return String.format("%.1f km/h", kmPerHour);
     }
 
-    public String getBurnedCalories(){
+    public int getBurnedCalories(){
         final int MET = 10;
         // duration * (MET/3600) * Kg
         double value = (duration * MET * userWeight) / 3600.0;
         int intValue = (int) value;
 
-        return intValue + " kcal";
+        return intValue;
+    }
+
+    public String getBurnedCaloriesAsString(){
+        return getBurnedCalories() + " kcal";
     }
 
     // methods for list item management

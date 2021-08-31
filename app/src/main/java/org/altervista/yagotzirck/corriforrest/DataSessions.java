@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
-import java.util.List;
 
 public class DataSessions {
 
@@ -57,7 +56,7 @@ public class DataSessions {
         ArrayList<DataSession> intervalSessions = new ArrayList<>();
 
         for(DataSession ds: dataSessionsList) {
-            Date dsDate = ds.getDateValue();
+            Date dsDate = ds.getDate();
             if (ds.getUser().equals(user) &&
                 (dsDate.compareTo(date1) >= 0 || isSameDay(dsDate, date1)) &&
                 dsDate.compareTo(date2) <= 0)
@@ -71,7 +70,7 @@ public class DataSessions {
         ArrayList<DataSession> intervalSessions = new ArrayList<>();
 
         for(DataSession ds: dataSessionsList) {
-            Date dsDate = ds.getDateValue();
+            Date dsDate = ds.getDate();
             SimpleDateFormat sdf = new SimpleDateFormat("yyyyMM");
 
             if (ds.getUser().equals(user) &&
@@ -79,6 +78,7 @@ public class DataSessions {
                 intervalSessions.add(ds);
         }
 
+        Collections.sort(intervalSessions, Collections.reverseOrder());
         return intervalSessions;
     }
 
@@ -86,7 +86,7 @@ public class DataSessions {
         ArrayList<DataSession> intervalSessions = new ArrayList<>();
 
         for(DataSession ds: dataSessionsList) {
-            Date dsDate = ds.getDateValue();
+            Date dsDate = ds.getDate();
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy");
 
             if (ds.getUser().equals(user)&&
@@ -97,6 +97,7 @@ public class DataSessions {
         Collections.sort(intervalSessions, Collections.reverseOrder());
         return intervalSessions;
     }
+
 
     private static Date buildDate(int day, int month, int year) {
         Calendar c = Calendar.getInstance();

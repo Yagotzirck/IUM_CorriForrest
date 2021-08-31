@@ -1,74 +1,216 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
+    android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
-    <ScrollView
+    <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:paddingVertical="5dp"
+        android:gravity="center"
+        android:text="@string/interval_period_text"
+        android:textColor="@color/black"
+        android:textSize="15sp"/>
 
-        <!-- 1) Date !-->
+    <RadioGroup
+        android:id="@+id/stats_radioGroup"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
 
-        <LinearLayout
-            android:layout_width="match_parent"
+
+        <RadioButton
+            android:id="@+id/stats_radioCustom"
+            android:layout_width="85dp"
+            android:gravity="center"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:layout_marginVertical="5dp">
+            android:background="@drawable/radio_flat_selector"
+            android:button="@android:color/transparent"
+            android:checked="true"
+
+            android:text="@string/radio_period_custom_interval"
+            android:textColor="@color/radio_flat_text_selector"
+            android:textSize="12sp"/>
+
+        <RadioButton
+            android:id="@+id/stats_radioMonth"
+            android:layout_width="85dp"
+            android:gravity="center"
+            android:layout_height="match_parent"
+            android:background="@drawable/radio_flat_selector"
+            android:button="@android:color/transparent"
 
 
+            android:text="@string/radio_period_month"
+            android:textColor="@color/radio_flat_text_selector"
+            android:textSize="12sp"/>
+
+        <RadioButton
+            android:id="@+id/stats_radioYear"
+            android:layout_width="85dp"
+            android:gravity="center"
+            android:layout_height="match_parent"
+            android:background="@drawable/radio_flat_selector"
+            android:button="@android:color/transparent"
+
+
+            android:text="@string/radio_period_year"
+            android:textColor="@color/radio_flat_text_selector"
+            android:textSize="12sp"/>
+
+        <RadioButton
+            android:id="@+id/stats_radioAll"
+            android:layout_width="85dp"
+            android:gravity="center"
+            android:layout_height="match_parent"
+            android:background="@drawable/radio_flat_selector"
+            android:button="@android:color/transparent"
+
+
+            android:text="@string/radio_period_all"
+            android:textColor="@color/radio_flat_text_selector"
+            android:textSize="12sp"/>
+
+    </RadioGroup>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="15dp"/>
+
+    <LinearLayout
+        android:id="@+id/stats_customSelection"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:orientation="horizontal"
+        android:layout_marginStart="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/interval_from_text"
+            android:textColor="@color/black"
+            android:textSize="15sp"/>
+
+        <Button
+            android:id="@+id/stats_buttonFrom"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:backgroundTint="@color/blue"
+            android:layout_marginStart="10dp"
+            android:text="12/05/1983"
+            android:textSize="15sp"
+            android:textColor="@color/white"/>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="20dp"
+            android:text="@string/interval_to_text"
+            android:textColor="@color/black"
+            android:textSize="15sp"/>
+
+        <Button
+            android:id="@+id/stats_buttonTo"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:backgroundTint="@color/blue"
+            android:layout_marginStart="10dp"
+            android:text="18/05/1983"
+            android:textSize="15sp"
+            android:textColor="@color/white"/>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:visibility="gone"
+        android:id="@+id/stats_monthSelection"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/stats_buttonMonth"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:backgroundTint="@color/blue"
+
+            android:text="08/1986"
+            android:textSize="15sp"
+            android:textColor="@color/white"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:visibility="gone"
+        android:id="@+id/stats_yearSelection"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/stats_buttonYear"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:backgroundTint="@color/blue"
+
+            android:text="1989"
+            android:textSize="15sp"
+            android:textColor="@color/white"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:visibility="gone"
+        android:id="@+id/stats_allSelection"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:orientation="horizontal">
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginVertical="5dp"
+        android:background="@color/black"/>
+
+    <TextView
+        android:id="@+id/stats_noSessionsPresent"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="@string/history_no_sessions_present"
+        android:textColor="@color/red"
+        android:textSize="18sp"/>
+
+    <LinearLayout
+        android:id="@+id/stats_displayedData"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+    <!-- 2) Starting time !-->
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingVertical="10dp"
-                android:background="@color/list_even">
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:orientation="horizontal"
-                    android:layout_alignParentStart="true">
-
-                    <ImageView
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_gravity="center"
-                        android:layout_marginStart="10dp"
-
-                        android:src="@drawable/ic_date"
-                        app:tint="@color/black"
-                        />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/details_date"
-                        android:layout_gravity="center"
-                        android:layout_marginStart="20dp"
-                        android:textSize="16sp"/>
-
-                </LinearLayout>
-
-                <TextView
-                    android:id="@+id/recap_date"
-                    android:layout_width="wrap_content"
-                    android:layout_height="40dp"
-                    android:gravity="center"
-                    android:text="12/04/1985"
-                    android:textSize="16sp"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginEnd="16dp"/>
-
-            </RelativeLayout>
-
-            <!-- 2) Starting time !-->
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingVertical="10dp"
+                android:paddingVertical="8dp"
                 android:background="@color/list_odd">
 
                 <LinearLayout
@@ -84,27 +226,27 @@
                         android:layout_gravity="center"
                         android:layout_marginStart="10dp"
 
-                        android:src="@drawable/ic_time"
+                        android:src="@drawable/ic_session_count"
                         app:tint="@color/black"
                         />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/details_starting_time"
+                        android:text="@string/stats_num_sessions"
                         android:layout_gravity="center"
                         android:layout_marginStart="20dp"
-                        android:textSize="16sp"/>
+                        android:textSize="20dp"/>
 
                 </LinearLayout>
 
                 <TextView
-                    android:id="@+id/recap_startingTime"
+                    android:id="@+id/stats_numSessions"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
                     android:gravity="center"
-                    android:text="10:15"
-                    android:textSize="16sp"
+                    android:text="6"
+                    android:textSize="20dp"
                     android:layout_alignParentEnd="true"
                     android:layout_marginEnd="20dp"/>
 
@@ -114,7 +256,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingVertical="10dp"
+                android:paddingVertical="8dp"
                 android:background="@color/list_even">
 
                 <LinearLayout
@@ -140,17 +282,17 @@
                         android:text="@string/details_duration"
                         android:layout_gravity="center"
                         android:layout_marginStart="20dp"
-                        android:textSize="16sp"/>
+                        android:textSize="20dp"/>
 
                 </LinearLayout>
 
                 <TextView
-                    android:id="@+id/recap_duration"
+                    android:id="@+id/stats_duration"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
                     android:gravity="center"
                     android:text="1:06:13"
-                    android:textSize="16sp"
+                    android:textSize="20dp"
                     android:layout_alignParentEnd="true"
                     android:layout_marginEnd="20dp"/>
 
@@ -160,7 +302,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingVertical="10dp"
+                android:paddingVertical="8dp"
                 android:background="@color/list_odd">
 
                 <LinearLayout
@@ -186,17 +328,17 @@
                         android:text="@string/details_distance"
                         android:layout_gravity="center"
                         android:layout_marginStart="20dp"
-                        android:textSize="16sp"/>
+                        android:textSize="20dp"/>
 
                 </LinearLayout>
 
                 <TextView
-                    android:id="@+id/recap_distance"
+                    android:id="@+id/stats_distance"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
                     android:gravity="center"
                     android:text="5.200 km"
-                    android:textSize="16sp"
+                    android:textSize="20dp"
                     android:layout_alignParentEnd="true"
                     android:layout_marginEnd="20dp"/>
 
@@ -207,7 +349,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingVertical="10dp"
+                android:paddingVertical="8dp"
                 android:background="@color/list_even">
 
                 <LinearLayout
@@ -233,17 +375,17 @@
                         android:text="@string/details_avg_rhythm"
                         android:layout_gravity="center"
                         android:layout_marginStart="20dp"
-                        android:textSize="16sp"/>
+                        android:textSize="20dp"/>
 
                 </LinearLayout>
 
                 <TextView
-                    android:id="@+id/recap_avgRhythm"
+                    android:id="@+id/stats_avgRhythm"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
                     android:gravity="center"
                     android:text="12'42'' / km"
-                    android:textSize="16sp"
+                    android:textSize="20dp"
                     android:layout_alignParentEnd="true"
                     android:layout_marginEnd="20dp"/>
 
@@ -253,7 +395,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingVertical="10dp"
+                android:paddingVertical="8dp"
                 android:background="@color/list_odd">
 
                 <LinearLayout
@@ -279,17 +421,17 @@
                         android:text="@string/details_avg_speed"
                         android:layout_gravity="center"
                         android:layout_marginStart="20dp"
-                        android:textSize="16sp"/>
+                        android:textSize="20dp"/>
 
                 </LinearLayout>
 
                 <TextView
-                    android:id="@+id/recap_avgSpeed"
+                    android:id="@+id/stats_avgSpeed"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
                     android:gravity="center"
                     android:text="4.9 km/h"
-                    android:textSize="16sp"
+                    android:textSize="20dp"
                     android:layout_alignParentEnd="true"
                     android:layout_marginEnd="20dp"/>
 
@@ -300,7 +442,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingVertical="10dp"
+                android:paddingVertical="8dp"
                 android:background="@color/list_even">
 
                 <LinearLayout
@@ -326,83 +468,25 @@
                         android:text="@string/details_burned_calories"
                         android:layout_gravity="center"
                         android:layout_marginStart="20dp"
-                        android:textSize="16sp"/>
+                        android:textSize="20dp"/>
 
                 </LinearLayout>
 
                 <TextView
-                    android:id="@+id/recap_burnedCalories"
+                    android:id="@+id/stats_burnedCalories"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
                     android:gravity="center"
                     android:text="500 kcal"
-                    android:textSize="16sp"
+                    android:textSize="20dp"
                     android:layout_alignParentEnd="true"
-                    android:layout_marginEnd="16sp"/>
+                    android:layout_marginEnd="20dp"/>
 
             </RelativeLayout>
 
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="15dp"/>
+    </LinearLayout>
+    
+    
 
-            <LinearLayout
-                android:layout_width = "match_parent"
-                android:layout_height = "wrap_content"
-                android:orientation = "horizontal"
-                android:weightSum="1.0">
-
-                <Space
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_weight="0.1">
-
-                </Space>
-
-                <Button
-                    android:id="@+id/recap_map"
-                    android:layout_weight="0.2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingVertical="15dp"
-                    android:textAllCaps="false"
-                    android:textSize="15sp"
-                    android:textColor="@color/white"
-                    android:backgroundTint="@color/link_blue"
-                    android:text = "@string/history_details_map_button"
-                    app:icon="@drawable/ic_bottomnav_map"
-                    app:iconGravity="start"
-                    >
-                </Button>
-
-                <Space
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_weight="0.3">
-
-                </Space>
-
-                <Button
-                    android:id="@+id/sessionDetails_backToSessionsList"
-                    android:layout_weight="0.2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingVertical="15dp"
-                    android:textAllCaps="false"
-                    android:textSize="15sp"
-                    android:textColor="@color/white"
-                    android:backgroundTint="@color/blue"
-                    android:text = "@string/history_close_details"
-
-                    >
-                </Button>
-
-            </LinearLayout>
-
-
-
-
-        </LinearLayout>
-    </ScrollView>
 
 </LinearLayout>

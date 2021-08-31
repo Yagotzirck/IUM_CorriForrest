@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -19,15 +18,11 @@ import androidx.fragment.app.Fragment;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.time.Month;
-import java.time.Year;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
 
-public class HistoryFragment extends Fragment implements DatePickersCallbacks, HistoryOpenSessionDetails {
-
+public class StatisticsFragment extends Fragment implements DatePickersCallbacks {
     @Override
     public void dayCallback(Date date) {
         DateFormat dateFormatter = new SimpleDateFormat("dd/MM/yyyy");
@@ -51,7 +46,7 @@ public class HistoryFragment extends Fragment implements DatePickersCallbacks, H
             }
         }
 
-        displaySelectedSessions();
+        displaySelectedPeriodStats();
     }
 
 
@@ -61,7 +56,7 @@ public class HistoryFragment extends Fragment implements DatePickersCallbacks, H
         monthYear = monthYearDate;
         monthButton.setText(dateFormatter.format(monthYearDate));
 
-        displaySelectedSessions();
+        displaySelectedPeriodStats();
     }
 
     @Override
@@ -70,14 +65,8 @@ public class HistoryFragment extends Fragment implements DatePickersCallbacks, H
         year = yearDate;
         yearButton.setText(dateFormatter.format(yearDate));
 
-        displaySelectedSessions();
+        displaySelectedPeriodStats();
     }
-
-    @Override
-    public void openSessionDetailsCallback(DataSession ds) {
-        SessionDetailsDialog.newInstance(ds).show(getFragmentManager(), null);
-    }
-
 
     private enum ClickedRadioButton {
         CUSTOM,
@@ -85,6 +74,7 @@ public class HistoryFragment extends Fragment implements DatePickersCallbacks, H
         YEAR,
         ALL
     };
+
 
     private RadioButton radioCustom;
     private RadioButton radioMonth;
@@ -106,19 +96,29 @@ public class HistoryFragment extends Fragment implements DatePickersCallbacks, H
     private Button yearButton;
 
 
+    private ClickedRadioButton selectedRadioButton;
+
     private Date dateFrom, dateTo, monthYear, year;
     private boolean fromButtonClicked = false;   // true = user clicked "from" in interval selection, "to" otherwise
 
-    private ClickedRadioButton selectedRadioButton;
+
 
     private TextView noSessionsPresent;
 
-    private ListView listView;
+    private LinearLayout displayedData;
+
+    private TextView numSessions;
+    private TextView duration;
+    private TextView distance;
+    private TextView avgRhythm;
+    private TextView avgSpeed;
+    private TextView burnedCalories;
+
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_history, container, false);
+        return inflater.inflate(R.layout.fragment_statistics, container, false);
     }
 
     @Override
@@ -130,27 +130,35 @@ public class HistoryFragment extends Fragment implements DatePickersCallbacks, H
         setDefaultButtonFields();
     }
 
-
-
     private void findViews(View view){
-        radioCustom = view.findViewById(R.id.history_radioCustom);
-        radioMonth = view.findViewById(R.id.history_radioMonth);
-        radioYear = view.findViewById(R.id.history_radioYear);
-        radioAll = view.findViewById(R.id.history_radioAll);
+        radioCustom = view.findViewById(R.id.stats_radioCustom);
+        radioMonth = view.findViewById(R.id.stats_radioMonth);
+        radioYear = view.findViewById(R.id.stats_radioYear);
+        radioAll = view.findViewById(R.id.stats_radioAll);
 
-        customSelectionLayout = view.findViewById(R.id.history_customSelection);
-        monthSelectionLayout = view.findViewById(R.id.history_monthSelection);
-        yearSelectionLayout = view.findViewById(R.id.history_yearSelection);
-        allSelectionLayout = view.findViewById(R.id.history_allSelection);
+        customSelectionLayout = view.findViewById(R.id.stats_customSelection);
+        monthSelectionLayout = view.findViewById(R.id.stats_monthSelection);
+        yearSelectionLayout = view.findViewById(R.id.stats_yearSelection);
+        allSelectionLayout = view.findViewById(R.id.stats_allSelection);
 
-        fromButton = view.findViewById(R.id.history_buttonFrom);
-        toButton = view.findViewById(R.id.history_buttonTo);
-        monthButton = view.findViewById(R.id.history_buttonMonth);
-        yearButton = view.findViewById(R.id.history_buttonYear);
+        fromButton = view.findViewById(R.id.stats_buttonFrom);
+        toButton = view.findViewById(R.id.stats_buttonTo);
+        monthButton = view.findViewById(R.id.stats_buttonMonth);
+        yearButton = view.findViewById(R.id.stats_buttonYear);
 
-        noSessionsPresent = view.findViewById(R.id.history_noSessionsPresent);
+        noSessionsPresent = view.findViewById(R.id.stats_noSessionsPresent);
 
-        listView = view.findViewById(R.id.history_listView);
+
+        displayedData = view.findViewById(R.id.stats_displayedData);
+
+        numSessions = view.findViewById(R.id.stats_numSessions);
+        duration = view.findViewById(R.id.stats_duration);
+        distance = view.findViewById(R.id.stats_distance);
+        avgRhythm = view.findViewById(R.id.stats_avgRhythm);
+        avgSpeed = view.findViewById(R.id.stats_avgSpeed);
+        burnedCalories = view.findViewById(R.id.stats_burnedCalories);
+
+
     }
 
     private void setListeners(){
@@ -189,11 +197,11 @@ public class HistoryFragment extends Fragment implements DatePickersCallbacks, H
 
         selectedRadioButton = clickedRadioButton;
 
-        displaySelectedSessions();
+        displaySelectedPeriodStats();
 
     }
 
-    private void displaySelectedSessions(){
+    private void displaySelectedPeriodStats(){
         DataSessions dataSessionsInstance = DataSessions.getInstance();
         ArrayList<DataSession> dataSessionsFiltered;
         String user = LoggedUser.getInstance().get();
@@ -220,13 +228,20 @@ public class HistoryFragment extends Fragment implements DatePickersCallbacks, H
 
         if(dataSessionsFiltered.isEmpty()) {
             noSessionsPresent.setVisibility(View.VISIBLE);
-            listView.setVisibility(View.GONE);
+            displayedData.setVisibility(View.GONE);
         }
-            else{
-                noSessionsPresent.setVisibility(View.GONE);
-                listView.setVisibility(View.VISIBLE);
-                HistorySessionsAdapter adapter = new HistorySessionsAdapter(getContext(), dataSessionsFiltered, this);
-             listView.setAdapter(adapter);
+        else{
+            noSessionsPresent.setVisibility(View.GONE);
+            displayedData.setVisibility(View.VISIBLE);
+
+            Statistics stats = new Statistics(user, dataSessionsFiltered);
+
+            numSessions.setText(stats.getNumSessionsAsString());
+            duration.setText(stats.getDurationAsString());
+            distance.setText(stats.getDistanceAsString() + "km");
+            avgRhythm.setText(stats.getAvgRhythmAsString());
+            avgSpeed.setText(stats.getAvgSpeedAsString());
+            burnedCalories.setText(stats.getBurnedCaloriesAsString());
         }
     }
 
@@ -259,8 +274,9 @@ public class HistoryFragment extends Fragment implements DatePickersCallbacks, H
 
 
 
-        displaySelectedSessions();
+        displaySelectedPeriodStats();
     }
+
 
     private Toast makeToast(String msg) {
         Toast toast = Toast.makeText(getContext(), msg, Toast.LENGTH_LONG);

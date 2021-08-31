@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="history_close_details">Torna alla lista sessioni</string>
+    <string name="history_details_map_button">Mappa\npercorso</string>
+    <string name="history_close_details">Chiudi\ndettagli</string>
+    <string name="history_no_sessions_present">Non sono presenti sessioni nell\'intervallo di tempo selezionato.</string>
 
 </resources>
