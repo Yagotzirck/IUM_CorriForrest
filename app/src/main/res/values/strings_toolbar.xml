@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="toolbar_startSession">Avvia sessione</string>
+
+    <string name="toolbar_sessionStarted_status">Sessione in corso - Stato</string>
+
+    <string name="toolbar_sessionStarted">Sessione in corso\ -\ </string>
+    <string name="toolbar_sessionPaused">Sessione in pausa\ -\ </string>
+
+    <string name="toolbar_sessionStatus">Stato</string>
+    <string name="toolbar_sessionMap">Mappa</string>
+    <string name="toolbar_sessionGoals">Obiettivi</string>
+
+    <string name="toolbar_sessionRecap">Riepilogo sessione</string>
+
+    <string name="toolbar_sessionHistory">Cronologia sessioni</string>
+    <string name="toolbar_statistics">Statistiche</string>
+
+    <string name="toolbar_goals">Obiettivi</string>
+    <string name="toolbar_createNewGoal">Crea nuovo obiettivo</string>
+
+</resources>

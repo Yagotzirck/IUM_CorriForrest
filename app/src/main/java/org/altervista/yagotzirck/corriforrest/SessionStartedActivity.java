@@ -1,6 +1,7 @@
 package org.altervista.yagotzirck.corriforrest;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
@@ -25,6 +26,9 @@ public class SessionStartedActivity extends AppCompatActivity {
     private Timer timer;
     private boolean isTimerStopped = true;
 
+    ActionBar actionBar;
+    int openFragmentId;
+
     class UpdateStats extends TimerTask {
 
         public void run() {
@@ -36,6 +40,17 @@ public class SessionStartedActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_session_started);
+
+
+        // calling the action bar
+        actionBar = getSupportActionBar();
+        // showing the back button in action bar
+        actionBar.setDisplayHomeAsUpEnabled(true);
+
+        openFragmentId = R.id.nav_status;
+
+
+
 
         BottomNavigationView bottomNav = findViewById(R.id.session_bottom_nav);
         bottomNav.setOnNavigationItemSelectedListener(navListener);
@@ -64,6 +79,9 @@ public class SessionStartedActivity extends AppCompatActivity {
 
                     }
 
+                    openFragmentId = item.getItemId();
+                    updateToolbarTitle();
+
                     getSupportFragmentManager().beginTransaction().replace(R.id.session_fragment_container, selectedFragment).commit();
                     return true;
                 }
@@ -75,6 +93,8 @@ public class SessionStartedActivity extends AppCompatActivity {
     public void startTimer(){
         if(isTimerStopped){
             isTimerStopped = false;
+            updateToolbarTitle();
+
             timer = new Timer();
             timer.schedule(new UpdateStats(), 1000, 1000);
         }
@@ -83,9 +103,31 @@ public class SessionStartedActivity extends AppCompatActivity {
     public void stopTimer(){
         timer.cancel();
         isTimerStopped = true;
+
+        updateToolbarTitle();
     }
 
     public DataSession getDataSession(){
         return dataSession;
+    }
+
+    private void updateToolbarTitle(){
+        String toolbarTitle = isTimerStopped? getString(R.string.toolbar_sessionPaused) : getString(R.string.toolbar_sessionStarted);
+
+        switch(openFragmentId){
+            case R.id.nav_status:
+                toolbarTitle += getString(R.string.toolbar_sessionStatus);
+                break;
+
+            case R.id.nav_map:
+                toolbarTitle += getString(R.string.toolbar_sessionMap);
+                break;
+
+            case R.id.nav_goals:
+                toolbarTitle += getString(R.string.toolbar_sessionGoals);
+                break;
+        }
+
+        actionBar.setTitle(toolbarTitle);
     }
 }

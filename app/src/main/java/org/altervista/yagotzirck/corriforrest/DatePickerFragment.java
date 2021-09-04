@@ -20,11 +20,18 @@ public class DatePickerFragment extends DialogFragment{
 
     private int year,month, dayOfMonth;
 
+    private boolean blockPastDays;
+
     @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         date = Calendar.getInstance();
-        listener = (DatePickersCallbacks)getParentFragment();
+
+        listener = (DatePickersCallbacks) getParentFragment();
+        if(listener == null)    // Dialog used inside an activity
+            listener = (DatePickersCallbacks) getActivity();
+
+        blockPastDays = getArguments() != null && getArguments().getBoolean("blockPastDays", false);
 
         int currYear = date.get(Calendar.YEAR);
         int currMonth = date.get(Calendar.MONTH);
@@ -32,6 +39,9 @@ public class DatePickerFragment extends DialogFragment{
 
         DatePickerDialog dpd = new DatePickerDialog(getActivity(), R.style.MyDatePickerDialogStyle, (DatePickerDialog.OnDateSetListener)
                 null, currYear, currMonth, currDay);
+
+        if(blockPastDays)
+            dpd.getDatePicker().setMinDate(Calendar.getInstance().getTimeInMillis());
 
         dpd.show();
 

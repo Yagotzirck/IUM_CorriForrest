@@ -9,18 +9,22 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private DrawerLayout drawer;
 
+    Toolbar toolbar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
+        toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         drawer = findViewById(R.id.drawer_layout);
@@ -55,20 +59,36 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     private void navigate(int id){
+
+        // toolbar.setTitle() doesn't work when the activity is launched for the first time
+        // (from onCreate() ), for whatever reason
+
         switch(id){
             case R.id.drawer_start_session:
+                //toolbar.setTitle(R.string.toolbar_startSession);
+                getSupportActionBar().setTitle(R.string.toolbar_startSession);
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new StartSessionFragment()).commit();
                 break;
 
             case R.id.drawer_session_history:
+                getSupportActionBar().setTitle(R.string.toolbar_sessionHistory);
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new HistoryFragment()).commit();
                 break;
 
             case R.id.drawer_statistics:
+                getSupportActionBar().setTitle(R.string.toolbar_statistics);
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new StatisticsFragment()).commit();
+                break;
+
+            case R.id.drawer_goals:
+                //toolbar.setTitle(R.string.toolbar_goals);
+                getSupportActionBar().setTitle(R.string.toolbar_goals);
+
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new GoalsFragment()).commit();
                 break;
         }
     }

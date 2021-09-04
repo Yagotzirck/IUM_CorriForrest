@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="goals_bottomnav_completed">Completati</string>
+    <string name="goals_bottomnav_ongoing">In corso</string>
+    <string name="goals_bottomnav_failed">Falliti</string>
+
+
+    <string name="goals_createGoal">Crea nuovo obiettivo</string>
+
+    <string name="goals_title_completed">Obiettivi completati</string>
+    <string name="goals_title_ongoing">Obiettivi in corso</string>
+    <string name="goals_title_failed">Obiettivi falliti</string>
+
+
+    <string name="goals_no_goals_present">Nessun obiettivo trovato per questa categoria.</string>
+
+    <string name="createGoal_goal_type">Tipologia obiettivo</string>
+
+    <string name="createGoal_radio_calories">Calorie da bruciare (kcal)</string>
+    <string name="createGoal_radio_distance">Distanza da percorrere (km)</string>
+    <string name="createGoal_radio_duration">Durata corsa</string>
+
+
+
+    <string name="createGoal_formulated_goal_text">Obiettivo formulato:</string>
+
+    <string name="createGoal_button_create">Crea obiettivo</string>
+    <string name="createGoal_button_cancel">Annulla</string>
+</resources>

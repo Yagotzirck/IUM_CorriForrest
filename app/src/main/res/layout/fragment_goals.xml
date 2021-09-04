@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <!-- Qua bisogna fare sta roba:
+    1) Tasto "Crea nuovo obiettivo"
+    2) 3 TextView con i testi "Obietivi completati/in corso/falliti", di cui solo una
+    andrà mostrata a seconda del pulsante che si preme nelle bottomnav
+    3) Una listview da sostituire al fragment container qua sotto (potrebbe funzionare)
+    !-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_above="@id/goals_bottom_nav">
+
+    <Button
+        android:id="@+id/goals_createGoal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:paddingVertical="10dp"
+        android:textAllCaps="false"
+        android:textSize="15sp"
+        android:textColor="@color/white"
+        app:backgroundTint="@color/blue"
+        android:text="@string/goals_createGoal"
+        app:icon="@drawable/ic_add"
+        app:iconGravity="start"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginVertical="5dp"
+            android:background="@color/black"/>
+
+        <TextView
+            android:id="@+id/goals_titleCompleted"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginVertical="8dp"
+            android:text="@string/goals_title_completed"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/dark_green"/>
+
+        <TextView
+            android:visibility="gone"
+            android:id="@+id/goals_titleOngoing"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginVertical="8dp"
+            android:text="@string/goals_title_ongoing"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:visibility="gone"
+            android:id="@+id/goals_titleFailed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginVertical="8dp"
+            android:text="@string/goals_title_failed"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/dark_red"/>
+
+        <TextView
+            android:id="@+id/goals_noGoalsPresent"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="@string/goals_no_goals_present"
+            android:textColor="@color/red"
+            android:textSize="18sp"/>
+
+
+        <ListView
+            android:id="@+id/goals_listView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:divider="@color/black"
+            android:dividerHeight="2dp"/>
+
+
+    </LinearLayout>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/goals_bottom_nav"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        app:menu="@menu/goals_bottomnav"
+        app:itemTextColor="@drawable/bottom_tab_color"
+        app:itemIconTint="@drawable/bottom_tab_color"
+
+        android:background="@color/bn_color"/>
+
+</RelativeLayout>

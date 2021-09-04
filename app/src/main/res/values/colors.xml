@@ -9,7 +9,10 @@
     <color name="white">#FFFFFFFF</color>
 
     <color name ="red">#F00</color>
+    <color name ="dark_red">#800000</color>
+
     <color name="light_green">#228B22</color>
+    <color name="dark_green">#046C04</color>
 
     <color name="button_green">#24C06B</color>
     <color name="button_orange">#FFA831</color>

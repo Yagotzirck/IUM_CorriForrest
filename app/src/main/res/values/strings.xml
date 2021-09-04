@@ -9,7 +9,6 @@
     <string name="dialogmap_close">Chiudi</string>
 
 
-
     <string name="interval_period_text">Periodo</string>
     <string name="radio_period_custom_interval">Intervallo personalizzato</string>
     <string name="radio_period_day">Giorno</string>
@@ -23,4 +22,11 @@
 
     <string name="numpicker_title_month">Mese</string>
     <string name="numpicker_title_year">Anno</string>
+
+    <string name="numpicker_title_calories">Calorie da bruciare (kcal)</string>
+
+    <string name="numpicker_title_distance">Distanza da percorrere (km)</string>
+
+    <string name="numpicker_title_hours">Ore</string>
+    <string name="numpicker_title_minutes">Minuti</string>
 </resources>

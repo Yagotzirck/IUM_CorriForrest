@@ -19,15 +19,15 @@ public class DataSessions {
             instance = new DataSessions();
             dataSessionsList = new ArrayList<>();
 
-            dataSessionsList.add(new DataSession("a", buildDate(12, 2, 2021), 1000, 4500));
-            dataSessionsList.add(new DataSession("a", buildDate(13, 2, 2021), 1000, 4500));
-            dataSessionsList.add(new DataSession("a", buildDate(14, 2, 2021), 1000, 4500));
-            dataSessionsList.add(new DataSession("a", buildDate(15, 2, 2021), 1000, 4500));
-            dataSessionsList.add(new DataSession("a", buildDate(16, 2, 2021), 1000, 4500));
-            dataSessionsList.add(new DataSession("a", buildDate(17, 2, 2021), 1000, 4500));
-            dataSessionsList.add(new DataSession("a", buildDate(18, 2, 2021), 1000, 4500));
-            dataSessionsList.add(new DataSession("a", buildDate(19, 2, 2021), 1000, 4500));
-            dataSessionsList.add(new DataSession("a", buildDate(20, 2, 2021), 1000, 4500));
+            dataSessionsList.add(new DataSession("john", buildDate(12, 2, 2021), 1000, 2000));
+            dataSessionsList.add(new DataSession("john", buildDate(13, 2, 2021), 1000, 4500));
+            dataSessionsList.add(new DataSession("john", buildDate(14, 2, 2021), 1000, 4500));
+            dataSessionsList.add(new DataSession("john", buildDate(24, 8, 2021), 1000, 4500));
+            dataSessionsList.add(new DataSession("john", buildDate(25, 8, 2021), 2000, 3500));
+            dataSessionsList.add(new DataSession("john", buildDate(26, 8, 2021), 1500, 2800));
+            dataSessionsList.add(new DataSession("john", buildDate(28, 8, 2021), 800,  1500));
+            dataSessionsList.add(new DataSession("john", buildDate(1, 9, 2021), 2300, 4500));
+            dataSessionsList.add(new DataSession("john", buildDate(2, 9, 2021), 1800, 2900));
         }
         return instance;
     }
@@ -62,6 +62,21 @@ public class DataSessions {
                 dsDate.compareTo(date2) <= 0)
                     intervalSessions.add(ds);
         }
+        Collections.sort(intervalSessions, Collections.reverseOrder());
+        return intervalSessions;
+    }
+
+    public ArrayList<DataSession> getSessionsByDay(String user, Date date){
+        ArrayList<DataSession> intervalSessions = new ArrayList<>();
+
+        for(DataSession ds: dataSessionsList) {
+            Date dsDate = ds.getDate();
+
+            if (ds.getUser().equals(user) &&
+                    isSameDay(dsDate, date))
+                intervalSessions.add(ds);
+        }
+
         Collections.sort(intervalSessions, Collections.reverseOrder());
         return intervalSessions;
     }

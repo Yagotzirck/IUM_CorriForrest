@@ -9,11 +9,23 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CorriForrest">
-        <activity android:name=".SessionRecapActivity"></activity>
-        <activity android:name=".SessionStartedActivity" />
+
+        <activity
+            android:name=".CreateGoalActivity"
+            android:label="@string/toolbar_createNewGoal">
+        </activity>
+
+        <activity
+            android:name=".SessionRecapActivity"
+            android:label="@string/toolbar_sessionRecap"
+            />
+
+        <activity android:name=".SessionStartedActivity"
+            android:label="@string/toolbar_sessionStarted_status"/>
         <activity
             android:name=".MainActivity"
-            android:theme="@style/Theme.CorriForrest.NoActionBar" />
+            android:theme="@style/Theme.CorriForrest.NoActionBar"
+            android:label="@string/toolbar_startSession"/>
         <activity
             android:name=".SignupActivity"
             android:theme="@style/Theme.CorriForrest.NoActionBar" />
@@ -29,16 +41,10 @@
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyAOKPdyX8zvzVh5JU6b5dxgMNsHqHI6fKU"/>
-
+            android:value="AIzaSyAOKPdyX8zvzVh5JU6b5dxgMNsHqHI6fKU" />
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
-
-
     </application>
-
-
-
 
 </manifest>

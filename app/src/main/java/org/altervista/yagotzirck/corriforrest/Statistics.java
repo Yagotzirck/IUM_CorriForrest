@@ -38,4 +38,9 @@ public class Statistics {
     public String getAvgRhythmAsString(){ return sessionStats.getAvgRhythmAsString(); }
     public String getAvgSpeedAsString(){ return sessionStats.getAvgSpeedAsString(); }
     public String getBurnedCaloriesAsString(){ return burnedCalories + " kcal"; }
+
+    public int getNumSessions(){ return numSessions; }
+    public int getDuration() { return sessionStats.getDuration(); }
+    public int getDistance(){ return sessionStats.getDistance(); }
+    public int getBurnedCalories(){ return burnedCalories; }
 }

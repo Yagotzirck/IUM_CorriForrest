@@ -17,7 +17,7 @@ public class Users {
         if (instance == null) {
             instance = new Users();
             userList = new ArrayList<>();
-            userList.add(new User("a", "a", 80));  // debug, rimuovere
+            userList.add(new User("john", "john", 80));  // debug, rimuovere
         }
         return instance;
     }

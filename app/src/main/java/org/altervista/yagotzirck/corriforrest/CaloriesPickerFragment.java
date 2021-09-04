@@ -13,29 +13,26 @@ import androidx.fragment.app.DialogFragment;
 
 import java.util.Calendar;
 
-public class YearPickerFragment extends DialogFragment {
+public class CaloriesPickerFragment extends DialogFragment {
 
-    private NumberPicker yearPicker;
+    private NumberPicker caloriesPicker;
 
-    private DatePickersCallbacks listener;
+    private TargetValuePickersCallbacks listener;
 
-    private boolean blockPastDays;
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
 
-        blockPastDays = getArguments() != null && getArguments().getBoolean("blockPastDays", false);
-
         LayoutInflater inflater = (LayoutInflater) getContext().getSystemService( Context.LAYOUT_INFLATER_SERVICE );
-        View view = inflater.inflate(R.layout.fragment_year_picker, null);
+        View view = inflater.inflate(R.layout.fragment_calories_picker, null);
 
-        listener = (DatePickersCallbacks)getParentFragment();
+        listener = (TargetValuePickersCallbacks)getParentFragment();
         if(listener == null)    // Dialog used inside an activity
-            listener = (DatePickersCallbacks)getActivity();
+            listener = (TargetValuePickersCallbacks)getActivity();
 
         builder.setView(view)
-                .setTitle("Scegli anno")
+                .setTitle("Scegli quante calorie bruciare")
                 .setNegativeButton("Annulla", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
@@ -57,21 +54,20 @@ public class YearPickerFragment extends DialogFragment {
     }
 
     private void findViews(View view){
-        yearPicker = view.findViewById(R.id.pickerYear_year);
+        caloriesPicker = view.findViewById(R.id.pickerCalories);
     }
 
     private void setPickers(){
-        int currYear = Calendar.getInstance().get(Calendar.YEAR);
+        final int minValue = 1;
+        final int maxValue = 1_000_000;
+        final int startingValue = 500;
 
-        yearPicker.setMinValue(blockPastDays ? currYear : 0);
-        yearPicker.setMaxValue(3000);
-        yearPicker.setValue(currYear);
+        caloriesPicker.setMinValue(minValue);
+        caloriesPicker.setMaxValue(maxValue);
+        caloriesPicker.setValue(startingValue);
     }
 
     private void dialogOK(){
-        Calendar year = Calendar.getInstance();
-        year.set(Calendar.YEAR, yearPicker.getValue());
-
-        listener.yearCallback(year.getTime());
+        listener.targetValueCallback(caloriesPicker.getValue());
     }
 }
