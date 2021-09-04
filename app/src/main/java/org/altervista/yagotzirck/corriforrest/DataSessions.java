@@ -33,6 +33,7 @@ public class DataSessions {
     }
 
     public void add(DataSession dataSession){ dataSessionsList.add(dataSession); }
+    public void remove(DataSession dataSession){ dataSessionsList.remove(dataSession); }
 
     public boolean contains(DataSession dataSession){ return dataSessionsList.contains(dataSession); }
 

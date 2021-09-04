@@ -26,4 +26,8 @@
 
     <string name="createGoal_button_create">Crea obiettivo</string>
     <string name="createGoal_button_cancel">Annulla</string>
+
+
+    <!-- Used in fragment_session_goals !-->
+    <string name="session_goal_no_active_goals">Nessun obiettivo attualmente completabile da mostrare.</string>
 </resources>

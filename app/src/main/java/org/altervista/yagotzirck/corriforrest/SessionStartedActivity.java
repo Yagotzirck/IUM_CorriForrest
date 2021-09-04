@@ -57,6 +57,11 @@ public class SessionStartedActivity extends AppCompatActivity {
 
         dataSession = new DataSession(LoggedUser.getInstance().get());
 
+        // temporarily put dataSession we just created inside the list of data sessions,
+        // in order to update goals' progress during the session; it will be removed inside
+        // the stop() function in SessionStatusFragment.java
+        DataSessions.getInstance().add(dataSession);
+
 
         getSupportFragmentManager().beginTransaction().replace(R.id.session_fragment_container,
                 new SessionStatusFragment()).commit();
@@ -77,6 +82,9 @@ public class SessionStartedActivity extends AppCompatActivity {
                             selectedFragment = new SessionMapFragment();
                             break;
 
+                        case R.id.nav_goals:
+                            selectedFragment = new SessionGoalsFragment();
+                            break;
                     }
 
                     openFragmentId = item.getItemId();

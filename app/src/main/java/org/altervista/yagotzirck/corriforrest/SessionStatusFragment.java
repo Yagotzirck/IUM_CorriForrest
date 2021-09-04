@@ -196,6 +196,10 @@ public class SessionStatusFragment extends Fragment {
         sessionStartedActivity = null;  // for garbage collection to take place (static variable)
         DataSession dataSession = sessionStartedActivityLocal.getDataSession();
 
+        // remove dataSession from the list of other data sessions; it's up to the user whether
+        // to keep it or not, inside SessionRecapActivity (after the session is stopped)
+        DataSessions.getInstance().remove(dataSession);
+
 
         // Change activity here (use a dialog fragment for confirmation)
         Intent sessionRecap = new Intent(sessionStartedActivityLocal, SessionRecapActivity.class);
