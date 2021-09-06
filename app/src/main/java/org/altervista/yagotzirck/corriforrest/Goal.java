@@ -82,7 +82,6 @@ public class Goal {
 
     public String getFormulatedGoal() {
         String outString ="";
-        int progressValue = getProgressValue();
 
         switch (goalType) {
             case CALORIES:
@@ -154,6 +153,7 @@ public class Goal {
 
 
     // setters
+    public void setUser(String username){ this.user = username; }
     public void setGoalPeriod(GoalPeriod goalPeriod) { this.goalPeriod = goalPeriod; }
     public void setGoalType(GoalType goalType) { this.goalType = goalType; }
     public void setDate1(Date date) { date1 = date; }

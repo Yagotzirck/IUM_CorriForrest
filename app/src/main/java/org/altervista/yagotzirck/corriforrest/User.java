@@ -22,6 +22,7 @@ public class User {
     public int getWeight(){ return weight; }
 
     // setters
+    public void setUsername(String username){ this.username = username; }
     public void setPassword(String password){ this.password = password; }
     public void setWeight(int weight){ this.weight = weight; }
 

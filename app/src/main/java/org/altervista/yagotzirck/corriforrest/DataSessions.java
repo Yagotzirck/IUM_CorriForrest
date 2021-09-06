@@ -114,6 +114,13 @@ public class DataSessions {
         return intervalSessions;
     }
 
+    public void changeUsernameFieldInSessions(String oldName, String newName){
+        for(DataSession ds: dataSessionsList)
+            if(ds.getUser().equals(oldName))
+                ds.setUser(newName);
+
+    }
+
 
     private static Date buildDate(int day, int month, int year) {
         Calendar c = Calendar.getInstance();

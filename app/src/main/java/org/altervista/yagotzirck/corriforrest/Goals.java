@@ -29,7 +29,7 @@ public class Goals {
             goalsList.add(new Goal("john", Goal.GoalPeriod.CUSTOM_INTERVAL, Goal.GoalType.DISTANCE, buildDate(1, 9, 2021), buildDate(12, 9, 2021), 0, 40_000, 0));
 
             // almost-completed goals
-            goalsList.add(new Goal("john", Goal.GoalPeriod.CUSTOM_INTERVAL, Goal.GoalType.DURATION, buildDate(1, 9, 2021), buildDate(7, 9, 2021), 4140, 0, 0));
+            goalsList.add(new Goal("john", Goal.GoalPeriod.CUSTOM_INTERVAL, Goal.GoalType.DURATION, buildDate(1, 9, 2021), buildDate(7, 9, 2021), 4110, 0, 0));
 
             // completed goals
             goalsList.add(new Goal("john", Goal.GoalPeriod.DAY, Goal.GoalType.DISTANCE, buildDate(13, 2, 2021), buildDate(13, 2, 2021), 0, 3_000, 0));
@@ -87,6 +87,12 @@ public class Goals {
 
         Collections.reverse(failedGoals);
         return failedGoals;
+    }
+
+    public void changeUsernameFieldInGoals(String oldName, String newName){
+        for(Goal goal : goalsList)
+            if(goal.getUser().equals(oldName))
+                goal.setUser(newName);
     }
 
 

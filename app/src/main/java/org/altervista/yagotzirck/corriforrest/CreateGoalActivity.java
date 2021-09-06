@@ -342,9 +342,12 @@ public class CreateGoalActivity extends AppCompatActivity implements DatePickers
         final int DEFAULT_TARGET_DISTANCE = 5000;   // 5 km
         final int DEFAULT_TARGET_CALORIES = 500;   // 500 kcal
 
+        goalPeriod = GoalPeriod.CUSTOM_INTERVAL;
+        goalType = GoalType.CALORIES;
+
         goal = new Goal(LoggedUser.getInstance().get(),
                 goalPeriod,
-                goalType.CALORIES,
+                goalType,
                 dateFrom,
                 dateTo,
                 DEFAULT_TARGET_DURATION,
@@ -353,8 +356,7 @@ public class CreateGoalActivity extends AppCompatActivity implements DatePickers
 
 
 
-        goalPeriod = GoalPeriod.CUSTOM_INTERVAL;
-        goalType = GoalType.CALORIES;
+
 
 
         clickedDayButton = ClickedDayButton.INTERVAL_FROM;
@@ -370,23 +372,21 @@ public class CreateGoalActivity extends AppCompatActivity implements DatePickers
         yearCallback(currDate);
 
 
-        goalType = GoalType.CALORIES;
-        targetValueCallback(DEFAULT_TARGET_CALORIES);
-
         goalType = GoalType.DURATION;
+        updateGoal();
         targetValueCallback(DEFAULT_TARGET_DURATION);
 
         goalType = GoalType.DISTANCE;
+        updateGoal();
         targetValueCallback(DEFAULT_TARGET_DISTANCE);
 
-
-        // starting value for goalType, after button initializations are done
+        // starting value for goalType
         goalType = GoalType.CALORIES;
-
-
-
-
         updateGoal();
+        targetValueCallback(DEFAULT_TARGET_CALORIES);
+
+
+
     }
 
     private void updateGoal(){

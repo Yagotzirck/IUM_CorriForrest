@@ -30,8 +30,8 @@
                 android:layout_marginTop="7dp"
 
                 android:text="Percorrere 5.000 km tra il 27/02/1990 ed il 03/03/1990"
-                android:textSize="13sp"
-                android:textColor="@color/black"/>
+                android:textColor="@color/black"
+                android:textSize="13sp" />
 
             <TextView
                 android:id="@+id/goal_item_progress"
@@ -56,7 +56,7 @@
         android:adjustViewBounds="true"
         android:src="@drawable/ic_delete"
 
-        app:tint="@color/dark_grey"
+        app:tint="@color/red"
         android:background="@null"/>
 
 

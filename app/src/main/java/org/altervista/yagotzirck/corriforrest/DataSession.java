@@ -34,6 +34,7 @@ public class DataSession implements Serializable, Comparable<DataSession> {
     }
 
     // setters
+    public void setUser(String username){ this.user = username ;}
 
     // min is inclusive, max is exclusive
     private int getRandomNumber(int min, int max) {

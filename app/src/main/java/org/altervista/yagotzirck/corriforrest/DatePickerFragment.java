@@ -54,6 +54,10 @@ public class DatePickerFragment extends DialogFragment{
             listener.dayCallback(date.getTime());
         });
 
+        dpd.getButton(DatePickerDialog.BUTTON_POSITIVE).setText("Conferma");
+        dpd.getButton(DatePickerDialog.BUTTON_NEGATIVE).setText("Annulla");
+
+
         dpd.setButton(DatePickerDialog.BUTTON_NEGATIVE, "Annulla", (dialog, whichButton) -> dismiss());
 
         dpd.getButton(DatePickerDialog.BUTTON_POSITIVE).setTextColor(Color.BLACK);

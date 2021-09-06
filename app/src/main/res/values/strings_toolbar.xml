@@ -19,4 +19,6 @@
     <string name="toolbar_goals">Obiettivi</string>
     <string name="toolbar_createNewGoal">Crea nuovo obiettivo</string>
 
+    <string name="toolbar_profile">Profilo</string>
+
 </resources>

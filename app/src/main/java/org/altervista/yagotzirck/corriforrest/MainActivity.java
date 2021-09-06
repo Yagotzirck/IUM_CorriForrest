@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     private void navigate(int id){
 
-        // toolbar.setTitle() doesn't work when the activity is launched for the first time
+        // toolbar.setTitle() doesn't work when the activity is launched
         // (from onCreate() ), for whatever reason
 
         switch(id){
@@ -89,6 +89,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new GoalsFragment()).commit();
+                break;
+
+            case R.id.drawer_profile:
+                getSupportActionBar().setTitle(R.string.toolbar_profile);
+
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new ProfileFragment()).commit();
                 break;
         }
     }
