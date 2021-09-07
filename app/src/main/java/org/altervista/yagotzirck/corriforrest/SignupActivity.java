@@ -86,6 +86,11 @@ public class SignupActivity extends AppCompatActivity {
 
         boolean emptyFields = false;
 
+        username.setError(null);
+        password.setError(null);
+        passwordConfirm.setError(null);
+        weight.setError(null);
+
         // Controlla che non ci siano campi vuoti
         for (TextInputLayout inputField : inputFields) {
             if (inputField.getEditText().getText().toString().isEmpty()) {

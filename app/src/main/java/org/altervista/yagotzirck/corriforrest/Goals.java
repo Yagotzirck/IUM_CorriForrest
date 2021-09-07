@@ -17,22 +17,24 @@ public class Goals {
         if (instance == null) {
             instance = new Goals();
             goalsList = new ArrayList<>();
+            
+            String user = LoggedUser.getInstance().get();
 
             // failed goals
-            goalsList.add(new Goal("john", Goal.GoalPeriod.DAY, Goal.GoalType.CALORIES, buildDate(12, 2, 2021), buildDate(12, 2, 2021), 0, 0, 500));
-            goalsList.add(new Goal("john", Goal.GoalPeriod.MONTH, Goal.GoalType.DISTANCE, buildDate(12, 2, 2021), buildDate(12, 2, 2021), 0, 300_000, 0));
+            goalsList.add(new Goal(user, Goal.GoalPeriod.DAY, Goal.GoalType.CALORIES, buildDate(12, 2, 2021), buildDate(12, 2, 2021), 0, 0, 500));
+            goalsList.add(new Goal(user, Goal.GoalPeriod.MONTH, Goal.GoalType.DISTANCE, buildDate(12, 2, 2021), buildDate(12, 2, 2021), 0, 300_000, 0));
 
             // ongoing goals
-            goalsList.add(new Goal("john", Goal.GoalPeriod.YEAR, Goal.GoalType.DISTANCE, buildDate(4, 9, 2021), buildDate(12, 2, 2021), 0, 400_000, 0));
-            goalsList.add(new Goal("john", Goal.GoalPeriod.DAY, Goal.GoalType.CALORIES, buildDate(4, 9, 2021), buildDate(12, 2, 2021), 0, 0, 400));
+            goalsList.add(new Goal(user, Goal.GoalPeriod.YEAR, Goal.GoalType.DISTANCE, buildDate(4, 9, 2021), buildDate(12, 2, 2021), 0, 400_000, 0));
+            goalsList.add(new Goal(user, Goal.GoalPeriod.DAY, Goal.GoalType.CALORIES, buildDate(4, 9, 2021), buildDate(12, 2, 2021), 0, 0, 400));
 
-            goalsList.add(new Goal("john", Goal.GoalPeriod.CUSTOM_INTERVAL, Goal.GoalType.DISTANCE, buildDate(1, 9, 2021), buildDate(12, 9, 2021), 0, 40_000, 0));
+            goalsList.add(new Goal(user, Goal.GoalPeriod.CUSTOM_INTERVAL, Goal.GoalType.DISTANCE, buildDate(1, 9, 2021), buildDate(12, 9, 2021), 0, 40_000, 0));
 
             // almost-completed goals
-            goalsList.add(new Goal("john", Goal.GoalPeriod.CUSTOM_INTERVAL, Goal.GoalType.DURATION, buildDate(1, 9, 2021), buildDate(7, 9, 2021), 4110, 0, 0));
+            goalsList.add(new Goal(user, Goal.GoalPeriod.CUSTOM_INTERVAL, Goal.GoalType.DURATION, buildDate(1, 9, 2021), buildDate(7, 9, 2021), 4110, 0, 0));
 
             // completed goals
-            goalsList.add(new Goal("john", Goal.GoalPeriod.DAY, Goal.GoalType.DISTANCE, buildDate(13, 2, 2021), buildDate(13, 2, 2021), 0, 3_000, 0));
+            goalsList.add(new Goal(user, Goal.GoalPeriod.DAY, Goal.GoalType.DISTANCE, buildDate(13, 2, 2021), buildDate(13, 2, 2021), 0, 3_000, 0));
 
         }
 

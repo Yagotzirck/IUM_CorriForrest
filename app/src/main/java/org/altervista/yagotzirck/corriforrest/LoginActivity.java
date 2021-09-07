@@ -56,6 +56,9 @@ public class LoginActivity extends AppCompatActivity {
 
         boolean emptyFields = false;
 
+        username.setError(null);
+        password.setError(null);
+
         if (usernameInput.isEmpty()) {
             username.setError(getString(R.string.login_error_emptyField));
             emptyFields = true;

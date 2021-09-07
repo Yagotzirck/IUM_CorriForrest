@@ -45,7 +45,7 @@ public class SessionStartedActivity extends AppCompatActivity {
         // calling the action bar
         actionBar = getSupportActionBar();
         // showing the back button in action bar
-        actionBar.setDisplayHomeAsUpEnabled(true);
+        //actionBar.setDisplayHomeAsUpEnabled(true);
 
         openFragmentId = R.id.nav_status;
 
