@@ -6,27 +6,23 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.MutableBoolean;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.NumberPicker;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.DialogFragment;
 
 import com.google.android.material.textfield.TextInputLayout;
 
-public class ProfileChangePasswordFragment extends DialogFragment {
+public class ProfileChangeUsernameFragment extends DialogFragment {
 
-    private TextInputLayout oldPassword;
-    private TextInputLayout newPassword;
-    private TextInputLayout confirmNewPassword;
+    private TextInputLayout newUsername;
+
 
     private ProfileChangeField listener;
 
-    private boolean isOldPasswordFilled;
-    private boolean isNewPasswordFilled;
-    private boolean isConfirmNewPasswordFilled;
+
+    private boolean isNewUsernameFilled;
 
     private AlertDialog alertDialog;
 
@@ -36,14 +32,14 @@ public class ProfileChangePasswordFragment extends DialogFragment {
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
 
         LayoutInflater inflater = (LayoutInflater) getContext().getSystemService( Context.LAYOUT_INFLATER_SERVICE );
-        View view = inflater.inflate(R.layout.fragment_change_password, null);
+        View view = inflater.inflate(R.layout.fragment_change_username, null);
 
         listener = (ProfileChangeField)getParentFragment();
         if(listener == null)    // Dialog used inside an activity
             listener = (ProfileChangeField)getActivity();
 
         builder.setView(view)
-                .setTitle("Modifica password")
+                .setTitle("Modifica nome utente")
                 .setNegativeButton("Annulla", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
@@ -77,13 +73,9 @@ public class ProfileChangePasswordFragment extends DialogFragment {
     }
 
     private void findViews(View view){
-        oldPassword = view.findViewById(R.id.profile_oldPassword);
-        newPassword = view.findViewById(R.id.profile_newPassword);
-        confirmNewPassword = view.findViewById(R.id.profile_confirmNewPassword);
+        newUsername = view.findViewById(R.id.profile_newUsername);
     }
 
-    // Todo: aggiungere setCallbacks() con le varie funzioni onFocusChanged() !hasFocus eccetera per vedere se l'utente ha compilato tutti i campi
-    // 3 booleani (uno per campo): se tutti e 3 sono true, attiva il pulsante di conferma
 
 
     private boolean isTextInputLayoutFieldEmpty(TextInputLayout til){
@@ -95,7 +87,7 @@ public class ProfileChangePasswordFragment extends DialogFragment {
     }
 
     private void activateOkButtonIfAllFieldsAreFilled(){
-        int visibility = (isOldPasswordFilled && isNewPasswordFilled && isConfirmNewPasswordFilled) ? View.VISIBLE : View.INVISIBLE;
+        int visibility = isNewUsernameFilled ? View.VISIBLE : View.INVISIBLE;
         alertDialog.getButton(AlertDialog.BUTTON_POSITIVE).setVisibility(visibility);
     }
 
@@ -105,6 +97,7 @@ public class ProfileChangePasswordFragment extends DialogFragment {
     private interface SetBooleanValue{
         void setBool(boolean value);
     }
+
 
     private void setOnTextChanged(TextInputLayout til, SetBooleanValue setBooleanValue){
 
@@ -122,8 +115,8 @@ public class ProfileChangePasswordFragment extends DialogFragment {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                setBooleanValue.setBool(!isTextInputLayoutFieldEmpty(til));
-                activateOkButtonIfAllFieldsAreFilled();
+                    setBooleanValue.setBool(!isTextInputLayoutFieldEmpty(til));
+                    activateOkButtonIfAllFieldsAreFilled();
             }
 
         });
@@ -131,50 +124,30 @@ public class ProfileChangePasswordFragment extends DialogFragment {
 
 
     private void setOnTextChangedForAll(){
-        isOldPasswordFilled = false;
-        isNewPasswordFilled = false;
-        isConfirmNewPasswordFilled = false;
+        isNewUsernameFilled = false;
 
-        setOnTextChanged(oldPassword, bVal -> isOldPasswordFilled = bVal);
-        setOnTextChanged(newPassword, bVal -> isNewPasswordFilled = bVal);
-        setOnTextChanged(confirmNewPassword, bVal -> isConfirmNewPasswordFilled = bVal);
+
+        setOnTextChanged(newUsername, bVal -> isNewUsernameFilled = bVal);
 
     }
 
 
     private boolean dialogOK(){
         if(validateFields()) {
-            listener.updateField(getTextInputLayoutField(newPassword));
+            listener.updateField(getTextInputLayoutField(newUsername));
             return true;
         }
         return false;
     }
 
     private boolean validateFields(){
-        String oldPasswordInput = getTextInputLayoutField(oldPassword);
-        String newPasswordInput = getTextInputLayoutField(newPassword);
-        String newPasswordConfirmInput = getTextInputLayoutField(confirmNewPassword);
+        String newUsernameInput = getTextInputLayoutField(newUsername);
 
         User user = Users.getInstance().get(LoggedUser.getInstance().get());
 
-        // Controllo sul vecchio campo password
-        if(!user.getPassword().equals(oldPasswordInput)){
-            oldPassword.setError(getString(R.string.changePW_error_oldPasswordMismatch));
-            return false;
-        }
-
-
-        // I due campi password devono coincidere
-        if (!newPasswordInput.equals(newPasswordConfirmInput)) {
-            newPassword.setError(getString(R.string.changePW_error_passwordMismatch));
-            confirmNewPassword.setError(getString(R.string.changePW_error_passwordMismatch));
-            return false;
-        }
-
-        // La nuova password non può essere uguale a quella precedente
-        if(newPasswordInput.equals(oldPasswordInput)){
-            newPassword.setError(getString(R.string.changePW_error_passwordSameAsOld));
-            confirmNewPassword.setError(getString(R.string.changePW_error_passwordSameAsOld));
+        // Il nuovo nome utente non può essere uguale a quello precedente
+        if(newUsernameInput.equals(user.getUsername())){
+            newUsername.setError(getString(R.string.changeUsername_error_usernameSameAsOld));
             return false;
         }
 

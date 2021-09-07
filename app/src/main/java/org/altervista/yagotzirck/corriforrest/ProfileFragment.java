@@ -72,7 +72,7 @@ public class ProfileFragment extends Fragment implements ProfileChangeField {
     void setListeners(){
         usernameEdit.setOnClickListener( v -> {
             selectedField = SelectedField.USERNAME;
-            //new ProfileChangeUsernameFragment().show(getChildFragmentManager(), null);
+            new ProfileChangeUsernameFragment().show(getChildFragmentManager(), null);
         });
 
         passwordEdit.setOnClickListener( v -> {
@@ -82,7 +82,7 @@ public class ProfileFragment extends Fragment implements ProfileChangeField {
 
         weightEdit.setOnClickListener( v -> {
             selectedField = SelectedField.WEIGHT;
-            //new ProfileChangeWeightFragment().show(getChildFragmentManager(), null);
+            new ProfileChangeWeightFragment().show(getChildFragmentManager(), null);
         });
     }
 
@@ -104,6 +104,7 @@ public class ProfileFragment extends Fragment implements ProfileChangeField {
                 username.setText(field);
 
                 user.setUsername(field);
+                LoggedUser.getInstance().set(field);
                 DataSessions.getInstance().changeUsernameFieldInSessions(oldName, field);
                 Goals.getInstance().changeUsernameFieldInGoals(oldName, field);
 

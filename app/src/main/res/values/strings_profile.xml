@@ -4,10 +4,20 @@
     <string name="profile_password">Password</string>
     <string name="profile_weight">Peso (kg)</string>
 
+
+    <string name="profile_hint_new_username">Nuovo username</string>
+
+    <string name="changeUsername_error_usernameSameAsOld">Il nuovo nome utente inserito deve differire da quello precedente</string>
+
     <string name="profile_hint_old_password">Vecchia password</string>
     <string name="profile_hint_new_password">Nuova password</string>
     <string name="profile_hint_confirm_new_password">Conferma nuova password</string>
 
+    <string name="changePW_error_oldPasswordMismatch">La vecchia password inserita è errata</string>
     <string name="changePW_error_passwordMismatch">Le password inserite non coincidono, assicurati di digitare la stessa password in entrambi i campi</string>
     <string name="changePW_error_passwordSameAsOld">La nuova password inserita deve differire da quella precedente</string>
+
+
+    <string name="profile_picker_titleWeight">Peso (kg)</string>
+
 </resources>

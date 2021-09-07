@@ -18,16 +18,18 @@ public class DataSessions {
         if (instance == null) {
             instance = new DataSessions();
             dataSessionsList = new ArrayList<>();
+            
+            String loggedUser = LoggedUser.getInstance().get();
 
-            dataSessionsList.add(new DataSession("john", buildDate(12, 2, 2021), 1000, 2000));
-            dataSessionsList.add(new DataSession("john", buildDate(13, 2, 2021), 1000, 4500));
-            dataSessionsList.add(new DataSession("john", buildDate(14, 2, 2021), 1000, 4500));
-            dataSessionsList.add(new DataSession("john", buildDate(24, 8, 2021), 1000, 4500));
-            dataSessionsList.add(new DataSession("john", buildDate(25, 8, 2021), 2000, 3500));
-            dataSessionsList.add(new DataSession("john", buildDate(26, 8, 2021), 1500, 2800));
-            dataSessionsList.add(new DataSession("john", buildDate(28, 8, 2021), 800,  1500));
-            dataSessionsList.add(new DataSession("john", buildDate(1, 9, 2021), 2300, 4500));
-            dataSessionsList.add(new DataSession("john", buildDate(2, 9, 2021), 1800, 2900));
+            dataSessionsList.add(new DataSession(loggedUser, buildDate(12, 2, 2021), 1000, 2000));
+            dataSessionsList.add(new DataSession(loggedUser, buildDate(13, 2, 2021), 1000, 4500));
+            dataSessionsList.add(new DataSession(loggedUser, buildDate(14, 2, 2021), 1000, 4500));
+            dataSessionsList.add(new DataSession(loggedUser, buildDate(24, 8, 2021), 1000, 4500));
+            dataSessionsList.add(new DataSession(loggedUser, buildDate(25, 8, 2021), 2000, 3500));
+            dataSessionsList.add(new DataSession(loggedUser, buildDate(26, 8, 2021), 1500, 2800));
+            dataSessionsList.add(new DataSession(loggedUser, buildDate(28, 8, 2021), 800,  1500));
+            dataSessionsList.add(new DataSession(loggedUser, buildDate(1, 9, 2021), 2300, 4500));
+            dataSessionsList.add(new DataSession(loggedUser, buildDate(2, 9, 2021), 1800, 2900));
         }
         return instance;
     }
